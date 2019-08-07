@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="card mt-3">
+        <div class="body">
+            <h4 class="loyality-heading"><span>App Dashboard > <span class="loyality-title">Loyality</span></span>
+                <button class="btn btn-default btn-sm" [routerLink]="['/loyality-create']"><i class="fa fa-plus"></i></button>
+            </h4>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover mt-3">
+            <thead class="">
+                <tr>
+                    <th>Label Id</th>
+                    <th>Label</th>
+                    <th>Rank</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let list of loyalityList">
+                    <td>{{list.label_id}}</td>
+                    <td>{{list.label}}</td>
+                    <td>{{list.rank}}</td>
+                    <td>{{list.description}}</td>
+                    <td> <span *ngIf="list.status;else active">
+                            Enabled
+                    </span>
+                    <ng-template #active>
+                            Disabled
+                    </ng-template></td>
+                    <td>
+                        <button class="btn btn-default btn-sm" (click)="isActiveRemove(list.label,list.status)">
+                            <span *ngIf="list.status;else active">
+                                    In-Active
+                            </span>
+                            <ng-template #active>
+                                    Active
+                            </ng-template>
+                            </button> |
+                        <button class="btn btn-default btn-sm"  [routerLink]="['/loyality-edit/',list.label]">Edit</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

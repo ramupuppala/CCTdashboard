@@ -1,0 +1,29 @@
+.app-dashboard-heading{
+    padding:15px;
+    display: flex;
+}
+.app-card{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.app-dashboard-heading span{
+    flex-grow: 1;
+    color: #666;
+    }
+.app_details{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.app_img img{
+    width:30px;
+}
+.app_profile_name h5{
+    color: #666;
+    font-weight: 700;
+}
+.app_category a{
+text-decoration: none;
+padding:10px;
+}

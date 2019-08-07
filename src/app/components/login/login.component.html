@@ -1,0 +1,32 @@
+<div class="card admin-blog-login">
+    <div class="card-body">
+        <form [formGroup]="loginForm" (keyup)="$event.keyCode == 13 &&loginFunction()">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="username" class="form-control" id="username"
+                    [formControl]="loginForm.controls.user.controls.username" (input)="fieldInput()" />
+                <span class="badge badge-warning"
+                    *ngIf="errorMsg||((!loginForm.controls.user.controls['username'].valid &&loginForm.controls.user.controls['username'].touched))">*Please
+                    Enter User Name</span>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input *ngIf="!marked" type="password" class="form-control" id="password"
+                    [formControl]="loginForm.controls.user.controls.password" (input)="fieldInput()" />
+                <input *ngIf="marked" type="text" class="form-control" id="password"
+                    [formControl]="loginForm.controls.user.controls.password" (input)="fieldInput()" />
+                <span class="badge badge-warning"
+                    *ngIf="errorMsg||((!loginForm.controls.user.controls['password'].valid &&loginForm.controls.user.controls['password'].touched))">*Please
+                    Enter Password</span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" (change)="toggleVisibility($event)" type="checkbox"> Show password
+                </label>
+            </div>
+            <button type="button" class="btn btn-primary" (click)="loginFunction()"
+                [disabled]="!loginForm.valid">Login</button>
+        </form>
+        {{toggle}}
+    </div>
+</div>

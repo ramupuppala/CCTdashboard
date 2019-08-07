@@ -1,0 +1,76 @@
+<div class="container">
+    <div class="card mt-3">
+        <div class="body">
+            <h4 class="manage-staff-heading"><span>App Dashboard > <span class="manage-staff-title">Manage Customer
+                        Care</span></span>
+                <button class="btn btn-warning btn-sm" [routerLink]="['/']">Manage Customer Care</button>
+            </h4>
+        </div>
+    </div>
+    <div class="manage-search mt-2">
+        <input type="text" class="form-control" [value]="searchByName" placeholder="Enter Your Search User name" id="search" name="username"
+            (change)="onChange($event)" />
+        <button class="btn btn-primary btn-sm" (click)="searchForCustomercare()">Search</button>
+        <button class="btn btn-primary btn-sm" (click)="cleareSearch()">Clear</button>
+    </div>
+
+    <div class="manage-store-card mt-3">
+        <div class="row">
+            <div class="col-sm-4" *ngFor="let profile of profiles">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-table-details">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>Attribute</th>
+                                        <th>Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><span>Role</span></td>
+                                        <td>
+                                            <p *ngFor="let role of profile.roles;let i = index">{{i+1}}.{{role.name}}
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span>Username</span></td>
+                                        <td>{{profile.profile.username}}</td>
+                                    </tr>
+                                    <tr *ngFor="let profile_attribute of profile.profile_attributes">
+                                        <td>{{profile_attr.display_name}}</td>
+                                        <td>{{profile_attr.value}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">{{profile.profile.uuid}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <div class="card-footer">
+                        <div class="manage-assign-links">
+                            <button class="btn btn-default btn-sm assign-btns" [routerLink]="['/']">Assign
+                                Brands</button>
+                            <button class="btn btn-default btn-sm assign-btns" [routerLink]="['/']">Assign
+                                Store</button>
+                            <button class="btn btn-default btn-sm assign-btns" [routerLink]="['/']">Assign
+                                Region</button>
+                            <button class="btn btn-default btn-sm assign-btns" [routerLink]="['/']">Assigned
+                                Store</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+        <div *ngIf="profiles.length == 0">
+                <div class="jumbotron no-records-found">
+                    <h3>No Records Found</h3>
+                </div>
+            </div>
+    </div>
+</div>

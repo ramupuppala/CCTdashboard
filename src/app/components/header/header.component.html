@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-md bg-white navbar-dark">
+    <a class="navbar-brand"  (click)="backClicked()"><img src="../../../assets/icon/back.svg" class="back-icon" alt="" /></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="fa fa-bars"></i> Inventa</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-center" href="#">Welcome,{{username}}<small>{{role[0].name}}</small></a>
+        </li>
+          
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
+        <button class="btn btn-default btn-sm color-red fw" (click)="doLogout();">Logout
+        
+        </button>
+      </form>
+
+    </div>  
+  </nav>

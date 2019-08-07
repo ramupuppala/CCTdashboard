@@ -1,0 +1,17 @@
+.create-loyality-list{
+    margin: 0 auto;
+    margin-top: 50px;
+    padding: 15px;
+    max-width: 600px;
+    background-color: #fff!important;
+}
+label{
+    font-size: 1em;
+    color: rgb(136, 136, 136);
+    margin-bottom: 0px !important;
+}
+.error{   
+    color: #f57f6c;
+    margin-bottom: 5px;
+    font-size: 0.8em;
+}

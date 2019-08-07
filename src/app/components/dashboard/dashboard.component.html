@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="card mt-3">
+        <div class="body">
+            <h4 class="admin-dashboard-heading"><span>Business Admin Dashboard</span>
+            <button class="btn btn-default btn-sm"><i class="fa fa-plus"></i></button>
+            </h4>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col-sm-4 col-lg-4 col-md-4 col-12 app-card"  *ngFor="let data of appData; let i = index">
+            <div class="card">
+                <div class="card-header collapsed"><h5>{{data.name}} <span data-toggle="collapse" [attr.data-target]="'#app_id_' + data.app_id" ><i class="fa"></i></span></h5></div>
+                <div class="card-body">
+                    <div [attr.id]="'app_id_'+data.app_id" class="collapse app_card_details_body">
+                      <p class="app_id mt-4">
+                          <b>App ID: </b>
+                          <span>{{data.app_id}}</span>
+                      </p>
+                      <p class="client_api_id">
+                          <b>Client API ID: </b>
+                          <span>{{data.client_api_id}}</span>
+                      </p>
+                    </div>
+
+                </div> 
+                <div class="card-footer">
+                    <div class="app-icons">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        
+                       
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                      
+                            <i class="fa fa-angle-double-right" aria-hidden="true" [routerLink]="['/app-dashboard/',data.app_id,data.name]"></i>
+                        
+                    </div>
+                </div>
+              </div>
+        </div>
+    </div>
+    
+</div>

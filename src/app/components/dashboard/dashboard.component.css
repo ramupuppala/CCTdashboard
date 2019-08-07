@@ -1,0 +1,70 @@
+.admin-dashboard-heading{
+    padding:15px;
+    display: flex;
+}
+
+.admin-dashboard-heading span{
+flex-grow: 1;
+color: #666;
+}
+
+.app-card{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.is-circle {
+    border-radius: 50%;
+    /* padding: 12px; */
+}
+
+.app-icons .btn{
+    margin:5px;
+    
+    align-items: center;
+}
+
+.app-icons{
+    display: flex;
+    /* justify-content: center; */
+}
+.fa-pencil{
+    flex-grow:1;
+}
+.fa-trash-o{
+    flex-grow:1;
+}
+.fa{
+    margin:10px;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+h5 span{
+    float: right;
+}
+
+.card-body {
+    padding: 0rem !important;
+}
+.app_card_details_body{
+    padding:1.25rem;
+}
+
+/* .card .card-header span:not(.collapsed) .rotate-icon {
+    transform: rotate(180deg);
+} */
+
+
+  
+ 
+
+  [data-toggle="collapse"] .fa:before {   
+    content: "\f107";
+  }
+
+  [aria-expanded="true"] .fa:before {   
+    content: "\f106";
+  }
+  [aria-expanded="false"] .fa:before {   
+    content: "\f107";
+  }

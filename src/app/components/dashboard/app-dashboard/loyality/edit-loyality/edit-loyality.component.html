@@ -1,0 +1,37 @@
+<div class="card create-loyality-list">
+    <div class="card-body">
+        <form [formGroup]="loyalityListData" (keyup)="$event.keyCode == 13 &&createLoyalityList()">
+            <div class="form-group">
+                <label for="newLabel">Loyalty Label</label>
+                <input type="text" class="form-control" id="newLabel"
+                    [formControl]="loyalityListData.controls.loyalityList.controls.newLabel" (input)="fieldInput()" />
+                <span class="error"
+                    *ngIf="errorMsg||((!loyalityListData.controls.loyalityList.controls['newLabel'].valid && loyalityListData.controls.loyalityList.controls['newLabel'].touched))">*Please
+                    Enter Label Name</span>
+                <span class="error"
+                    *ngIf="validation != ''">                 
+                {{validation}}</span>
+            </div>
+            <div class="form-group">
+                <label for="rank">Loyalty Rank</label>
+                <input type="number" class="form-control" id="rank"
+                    [formControl]="loyalityListData.controls.loyalityList.controls.rank" (input)="fieldInput()" />
+               
+                <span class="error"
+                    *ngIf="errorMsg||((!loyalityListData.controls.loyalityList.controls['rank'].valid && loyalityListData.controls.loyalityList.controls['rank'].touched))">*Please
+                    Enter rank</span>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" id="description"
+                    [formControl]="loyalityListData.controls.loyalityList.controls.description" (input)="fieldInput()" />
+                    <span class="error"
+                    *ngIf="errorMsg||((!loyalityListData.controls.loyalityList.controls['description'].valid && loyalityListData.controls.loyalityList.controls['description'].touched))">*Please
+                    Enter discription</span>
+            </div>
+            <button type="button" class="btn btn-primary" (click)="editLoyalityList()"
+            [disabled]="!loyalityListData.valid">Save Loyality</button>
+        </form>
+        {{toggle}}
+    </div>
+</div>

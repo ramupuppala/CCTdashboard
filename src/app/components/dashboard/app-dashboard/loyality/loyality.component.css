@@ -1,0 +1,23 @@
+.loyality-heading{
+    padding:15px;
+    display: flex;
+}
+
+.loyality-heading span{
+flex-grow: 1;
+color: #666;
+}
+table{
+    background: #fff !important;
+}
+.loyality-title{
+    color:rgb(102, 177, 255) !important;
+}
+
+table{
+    padding:1em !important;
+}
+
+.btn-default{
+    color: #409eff;
+}
