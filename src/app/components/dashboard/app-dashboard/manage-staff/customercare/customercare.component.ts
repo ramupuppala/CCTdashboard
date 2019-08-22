@@ -10,7 +10,8 @@ export class CustomercareComponent implements OnInit {
   constructor(private manageStaffService:ManageStaffService) { }
   profiles:any;
   searchByName:String;
-  ngOnInit() {
+
+  getCustomerDetails(){
     this.manageStaffService.getGetCustomerCareDetails().then((data:any)=>{
       if(data.status){
         console.log(data);
@@ -18,6 +19,9 @@ export class CustomercareComponent implements OnInit {
         console.log(this.profiles)
       }
     })
+  }
+  ngOnInit() {
+    this.getCustomerDetails();
   }
   searchForCustomercare(){
     this.manageStaffService.getSearchByCustomercare(this.searchByName).then((data:any)=>{
@@ -34,6 +38,7 @@ export class CustomercareComponent implements OnInit {
   }
   cleareSearch(){
     this.searchByName="";
+    this.getCustomerDetails();
   }
 
 }

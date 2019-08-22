@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  // api_endpoint:'https://www.cuttingchaitech.in/api'
-  api_endpoint:'http://localhost:8082/api'
+  api_endpoint:'https://www.cuttingchaitech.in/api'
+  // api_endpoint:'http://localhost:8082/api'
 };
 
 /*

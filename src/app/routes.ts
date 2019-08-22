@@ -13,7 +13,17 @@ import { EditLoyalityComponent } from './components/dashboard/app-dashboard/loya
 import { BroadcastNotificationComponent } from './components/dashboard/app-dashboard/broadcast-notification/broadcast-notification.component';
 //manage-staff
 import { CustomercareComponent } from './components/dashboard/app-dashboard/manage-staff/customercare/customercare.component';
+import { AssingStoreComponent } from './components/dashboard/app-dashboard/manage-staff/customercare/assing-store/assing-store.component';
+import { AssignedStoreComponent } from './components/dashboard/app-dashboard/manage-staff/customercare/assigned-store/assigned-store.component';
+
 import { StoremanagerComponent } from './components/dashboard/app-dashboard/manage-staff/storemanager/storemanager.component';
+
+//Profile List
+import { ProfileListComponent } from './components/dashboard/app-dashboard/profile-list/profile-list.component';
+import { UpdateCustomerIdComponent } from './components/dashboard/app-dashboard/profile-list/update-customer-id/update-customer-id.component';
+import { CreateProfileListComponent } from './components/dashboard/app-dashboard/profile-list/create-profile-list/create-profile-list.component';
+import { EditProfileListComponent } from './components/dashboard/app-dashboard/profile-list/edit-profile-list/edit-profile-list.component';
+
 
 export const ROUTES: Route[] = [
     {
@@ -42,9 +52,30 @@ export const ROUTES: Route[] = [
         path: 'broadcast-notification', component: BroadcastNotificationComponent
     },
     {
-        path: 'manage-customer-care', component: CustomercareComponent
+        path: 'manage-customer-care', component: CustomercareComponent,      
+    },
+    {
+        path: 'manage-staff-assign-store/:id/:type', component: AssingStoreComponent,      
+    },
+    {
+        path: 'manage-staff-assigned-store/:id/:type', component: AssignedStoreComponent,      
     },
     {
         path: 'manage-store-manager', component: StoremanagerComponent
+    },
+    {
+        path: 'profile-list', component: ProfileListComponent
+    },
+    {
+        path: 'update-customerid/:p_id/:customer_id', component: UpdateCustomerIdComponent
+    },
+    {
+        path: 'update-customerid/:p_id', component: UpdateCustomerIdComponent
+    },
+    {
+        path: 'create-profile-list', component: CreateProfileListComponent
+    },
+    {
+        path: 'edit-profile-list/:p_id', component: EditProfileListComponent
     }
 ]

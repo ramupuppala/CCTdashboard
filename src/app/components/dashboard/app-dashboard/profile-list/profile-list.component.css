@@ -1,0 +1,48 @@
+@media (min-width:767px){
+
+    .search-profile-list{
+        display: flex;
+    }
+    .search-profile-list__select-box{
+        flex-grow:1;
+        margin:10px;
+    }
+    .search-profile-list__input{
+        flex-grow:1;
+        margin:10px;
+    }
+}
+.search-profile-list__btn{
+    margin:10px 10px;
+}
+
+.card-table-details{
+    width: 100%;
+    max-height: 225px ;
+    overflow-y: auto;    
+}
+.manage-assign-links{
+    text-align: center;
+}
+.assign-btns{
+    color: #3a8ee6;
+    font-weight: 600; 
+   
+}
+.table td, .table th {
+    padding: 0.5em !important;
+    box-sizing: border-box !important;
+}
+
+.no-records-found{
+    text-align: center
+}
+
+.th-bg-color{
+    background-color: rgb(241, 241, 241);
+}
+.profile-list-heading{
+    color: black;
+    font-weight: 600;
+    font-size: 0.8em;
+}

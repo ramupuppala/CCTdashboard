@@ -1,0 +1,117 @@
+<div class="container mt-3">
+    <div class="search-profile-list">
+        <div class="form-group search-profile-list__select-box">
+            <select class="form-control" id="sel1" name="sellist1"  (change)="onChangeBySelect($event)" >
+                <option>Select Search Opinion</option>
+                <option value="role">Role</option>
+                <option value="username">Username</option>
+                <option value="CustomerId">Customer Id</option>
+            </select>
+        </div>
+        <div class="form-group search-profile-list__input">
+            <input type="text" class="form-control" id="usr" [value]="profileListData.username" (change)="onChangeByInput($event)"/>
+        </div>
+
+        <button type="button" class="btn btn-primary btn-sm search-profile-list__btn" (click)="getProfileList()">Search</button>
+        <button type="button" class="btn btn-primary btn-sm search-profile-list__btn" (click)="clear()">Clear</button>
+    </div>
+    <div class="manage-store-card mt-3">
+        <div class="row">
+            <div class="col-sm-4 mt-3" *ngFor="let profile of profiles">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-table-details">
+                            <table class="table">
+                                <thead class="th-bg-color">
+                                    <tr>
+                                        <th>Attribute</th>
+                                        <th>Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="profile-list-heading">Role</td>
+                                        <td>
+                                            <p *ngFor="let role of profile.roles;let i = index">{{i+1}}.{{role.name}}
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr *ngFor="let profile_attr of profile.profile_attributes">
+                                        <td class="profile-list-heading">{{profile_attr.display_name}}</td>
+                                        <td>{{profile_attr.value}}</td>
+                                    </tr>                                   
+                                    <tr *ngFor="let label of profile.label; let i = index">
+                                        <td class="profile-list-heading">Loyalty</td>
+                                        <td >{{i + 1}}. {{label.label}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="profile-list-heading">username:</td>
+                                        <td> {{profile.profile.username}}</td>
+                                    </tr>
+                                    <tr *ngIf="profile.profile.customer_id">
+                                        <td class="profile-list-heading">Customer Id</td>
+                                        <td> {{profile.profile.customer_id}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">{{profile.profile.uuid}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <div class="card-footer">
+                        <div class="manage-assign-links">
+                            <button class="btn btn-default btn-sm assign-btns"
+                                [routerLink]="['/manage-staff-assign-store/','/customercare']"
+                                *ngIf="checkRole(profile, 'Consumer')">Preffered
+                                Brands</button>
+                            <button class="btn btn-default btn-sm assign-btns"
+                                [routerLink]="['/edit-profile-list/',profile.p_id]">Edit</button>
+                            <button class="btn btn-default btn-sm assign-btns"
+                                *ngIf="profile.profile.customer_id != null;else isCustomerNull"
+                                [routerLink]="['/update-customerid/',profile.p_id,profile.profile.customer_id]">Update
+                                CustomerId</button>
+                            <ng-template #isCustomerNull><button class="btn btn-default btn-sm assign-btns"
+                                    [routerLink]="['/update-customerid/',profile.p_id]">Update CustomerId</button>
+                            </ng-template>
+                            <button class="btn btn-default btn-sm assign-btns" data-toggle="modal"
+                                data-target="#myModal">Delete</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- The Modal -->
+                <div class="modal" id="myModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Delete Profile</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <h5>Are you sure?This action can not be reserved.</h5>
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deleteProfileList(profile.p_id)">Delete</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div *ngIf="profiles.length == 0">
+            <div class="jumbotron no-records-found">
+                <h3>No Records Found</h3>
+            </div>
+        </div>
+    </div>
+</div>

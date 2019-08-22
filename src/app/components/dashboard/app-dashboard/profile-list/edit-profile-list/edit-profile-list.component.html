@@ -1,0 +1,94 @@
+<div class="container">
+        <div class="card create-profile-list">
+            <div class="card-header">
+                <h5>Edit Profile List</h5>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="profileListData" (keyup)="$event.keyCode == 13 &&userRegistrion()">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="username">UserName</label>
+                                <input type="text" class="form-control" id="username"
+                                    [formControl]="profileListData.controls.profileList.controls.username"
+                                    (input)="fieldInput()" placeholder="sampleuser@sampledomain.com" />
+                                <span class="error"
+                                    *ngIf="errorMsg||((!profileListData.controls.profileList.controls['username'].valid && profileListData.controls.profileList.controls['username'].touched))">*Please
+                                    Enter User name</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password"
+                                    [formControl]="profileListData.controls.profileList.controls.password"
+                                    (input)="fieldInput()" />
+                                <span class="error"
+                                    *ngIf="errorMsg||((!profileListData.controls.profileList.controls['password'].valid && profileListData.controls.profileList.controls['password'].touched))">*Please
+                                    Enter Password Name</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary" (click)="userRegistrion()"
+                        >Update Credential</button>
+                    </form>
+            </div>
+        </div>
+        <div class="card create-profile-list">
+                
+                <div class="card-body">
+                    <form [formGroup]="profileListData" (keyup)="$event.keyCode == 13 &&editprofileList()">
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input type="label" class="form-control" id="location"
+                            [formControl]="profileListData.controls.profileList.controls.location" (input)="fieldInput()"
+                            placeholder="latitude,longitude" disabled />
+    
+                    </div>
+                    <div class="form-group">
+                        <label for="rank">Notification Token</label>
+                        <input type="number" class="form-control" id="rank"
+                            [formControl]="profileListData.controls.profileList.controls.notificationToken"
+                            (input)="fieldInput()" disabled />
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name"
+                            [formControl]="profileListData.controls.profileList.controls.name" (input)="fieldInput()"
+                            placeholder="e.g. Anand" />
+    
+                    </div>
+                    <div class="form-group">
+                        <label for="role">Add Role*</label>
+                        <select class="form-control" id="role"
+                            [formControl]="profileListData.controls.profileList.controls.role" >
+                            <ng-container *ngFor="let role of roleDate" >
+                                <option *ngIf="role.name != 'BE Admin'" [ngValue]="role">{{role.name}}</option>
+                            </ng-container>
+                        </select>
+                    </div>
+                    <div class="form-group" *ngIf="this.profileListData.controls.profileList.value.role.name == 'Consumer'">
+                        <label for="loyaltyLabel">Loyality label*</label>
+                        <select class="form-control" id="loyaltyLabel"
+                            [formControl]="profileListData.controls.profileList.controls.loyaltyLabel" >                     
+                                <option selected="true">Select label </option>
+                                    <option *ngFor="let label of loyaltyLabel">{{label}}</option>
+            
+                        </select>
+                    </div>
+                    <button type="button" class="btn btn-primary" (click)="editprofileList()"
+                        [disabled]="!profileListData.valid">Save profile</button>
+                </form>              
+            </div>
+        </div>
+        <div class="card create-profile-list">
+                <div class="card-header">
+                   <h5>Assigned Roles</h5> 
+                </div>
+                <div class="card-body">
+                    <div *ngFor="let role of roles;let i=index">
+                        <i class="fa fa-times-circle" (click)="deleteRole(role)"></i>
+                        {{i+1 +". "+role.name}}
+                    </div>
+                    </div>
+    </div>

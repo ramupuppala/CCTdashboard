@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BroadcastNotificationService } from './../../../../services/broadcast-notification-service';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
-import { identifierModuleUrl } from '@angular/compiler';
 @Component({
   selector: 'app-broadcast-notification',
   templateUrl: './broadcast-notification.component.html',
@@ -24,7 +23,7 @@ export class BroadcastNotificationComponent implements OnInit {
     this.geoZoneData = fb.group({
       "geoZone": fb.group({
         "broadcast_type": [null, Validators.required],
-        "text": [null, Validators.required],
+        "text": ['', Validators.required],
         "sub_text": [null,Validators.required],
         "action_url": [null,Validators.required],
         "image_url": [null,Validators.required],
@@ -111,11 +110,13 @@ export class BroadcastNotificationComponent implements OnInit {
         this.eZoneDropdownList = data.data; 
         console.log(this.eZoneDropdownList);       
       }
+      else{
+        alert(data.validation);
+        location.reload();
+      }
     }));
   }
   getEzoneDataList(item:any){
-    console.log(item);
-
     this.broadcastNotification.getEzone(item.name).then(((data: any) => {
       if (data.status) {
         this.eZoneDropdownList = data.data; 

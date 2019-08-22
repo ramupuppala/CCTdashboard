@@ -36,3 +36,7 @@ color: #666;
 .no-records-found{
     text-align: center
 }
+
+.float-right{
+    float: right;
+}

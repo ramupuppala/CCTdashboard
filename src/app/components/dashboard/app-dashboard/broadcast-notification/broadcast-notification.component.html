@@ -95,7 +95,7 @@
                                 </div>
                             </div>
                             <button type="button" class="btn btn-primary" (click)="createNotification()" 
-                            [disabled]="geoZoneData.controls.geoZone.value.text.lenght < 1 "
+                            [disabled]="geoZoneData.controls.geoZone.value.text.length == 0 "
                             >Save</button>
                         </form>
                     </div>

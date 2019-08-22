@@ -10,3 +10,7 @@ label{
     color: rgb(136, 136, 136);
     margin-bottom: 0px !important;
 }
+.error-msg{
+font-size: 0.8em;
+color: red;
+}

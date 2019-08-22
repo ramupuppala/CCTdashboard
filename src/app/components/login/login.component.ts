@@ -10,12 +10,15 @@ import { UserService } from '../../services/user-service';
 export class LoginComponent implements OnInit{
     public loginForm: FormGroup;
     public submitted = false;
+    public status:boolean=true;
+    public validation:string="";
     public login = {
         "user": {
             "username": "",
             "password": ""
         }
-    }
+    };
+
     public errorMsg: boolean = false;
     public marked: boolean = false;
     constructor(private router: Router, private userService: UserService, private fb: FormBuilder) {
@@ -50,10 +53,19 @@ export class LoginComponent implements OnInit{
                     window.localStorage.setItem("roles", JSON.stringify(data.data[0]["roles"]));
                     window.localStorage.setItem("x-refresh-token", data.data[0]["x-refresh-token"]);
                     this.userService.doLoggedIn();
-                    this.router.navigate(['admindashboard']);
+                    if(data.data[0]["roles"][0].name == "Store Manager"){
+                       this.router.navigate(['storedashboard']); 
+                    }
+
+                    else
+                    {
+                        location.href="admindashboard"
+                    }
+                    // this.router.navigate(['admindashboard']);
                 }
                 else {
-                    alert(data.validation);
+                    this.status=data.status;
+                    this.validation=data.validation
                 }
 
             }));

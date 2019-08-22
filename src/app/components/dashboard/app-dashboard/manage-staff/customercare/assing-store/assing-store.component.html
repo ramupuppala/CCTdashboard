@@ -1,0 +1,30 @@
+<div class="container mt-3">
+    <div class="card mt-3" *ngFor="let store of stores;let i = index">
+        <div class="card-header">
+                <button class="btn btn-default btn-sm assign-btns float-right" (click)="assignStore(store.st_id)">Assign
+                 </button>
+        </div>
+        <div class="card-body">
+            <table class="table">            
+                <tbody>
+                  <tr>
+                    <td>Store id:</td>
+                    <td>{{store.st_id}}</td>
+                    
+                  </tr>
+                  <tr  *ngFor="let store_attr of store.store_attributes;let i = index" >
+                    <td *ngIf=" store_attr.display_name == 'City' ||  store_attr.display_name == 'State' ||  store_attr.display_name == 'Country' || store_attr.display_name == 'Name'">
+                    {{store_attr.display_name}}</td>
+                    <td *ngIf=" store_attr.display_name == 'City' ||  store_attr.display_name == 'State' || store_attr.display_name == 'Country' || store_attr.display_name == 'Name'">{{store_attr.value}}</td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+        </div>
+    </div>
+    <div *ngIf="stores.length == 0">
+            <div class="jumbotron no-records-found">
+                <h3>No Records Found</h3>
+            </div>
+        </div>
+</div>

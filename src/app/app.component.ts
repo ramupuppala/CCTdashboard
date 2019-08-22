@@ -14,8 +14,7 @@ export class AppComponent implements OnInit {
     this.service.headerNav.subscribe(header => this.header = header);
     if (localStorage.getItem('x-access-token')) {
       this.service.doLoggedIn();
-        // this.router.navigate(['']);
-   
+        // this.router.navigate(['']);   
     }
   }
 

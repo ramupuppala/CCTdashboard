@@ -1,13 +1,16 @@
-.create-loyality-list{
+.container{
+    padding-bottom: 30px;
+}
+.create-profile-list{
     margin: 0 auto;
     margin-top: 50px;
     padding: 15px;
-    max-width: 600px;
     background-color: #fff!important;
 }
 label{
-    font-size: 1em;
-    color: rgb(136, 136, 136);
+    font-size: 0.8em;
+    color: #2c3e50;
+    font-weight: 700;
     margin-bottom: 0px !important;
 }
 .error{   
@@ -15,9 +18,17 @@ label{
     margin-bottom: 5px;
     font-size: 0.8em;
 }
-
+.card-header {    
+    background-color:transparent !important;
+    border-bottom: 0px transparent !important;
+}
+.fa-times-circle{   
+    color: red;
+    cursor: pointer;
+    margin-right: 10px;
+}
 @media (max-width:767px){
-    .create-loyality-list{
+    .create-profile-list{
         margin: 40px;
         padding: 15px;
         max-width: 600px;

@@ -24,11 +24,14 @@
     font-weight: 700;
 }
 
-.text-center{
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%,-10px);
-}
-small{
-    display: block;
+@media only screen and (min-width: 768px) {
+    .text-center{
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%,-10px);
+    }
+    small{
+        display: block;
+    }
+    
 }

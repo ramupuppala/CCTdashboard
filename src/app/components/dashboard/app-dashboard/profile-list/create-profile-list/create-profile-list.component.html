@@ -1,0 +1,76 @@
+<div class="container">
+    <div class="card create-profile-list">
+        <div class="card-header">
+            <h5>Create Profile List</h5>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="profileListData" (keyup)="$event.keyCode == 13 &&createProfileList()">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="username">UserName</label>
+                            <input type="text" class="form-control" id="username"
+                                [formControl]="profileListData.controls.profileList.controls.username"
+                                (input)="fieldInput()" placeholder="sampleuser@sampledomain.com" />
+                            <span class="error"
+                                *ngIf="errorMsg||((!profileListData.controls.profileList.controls['username'].valid && profileListData.controls.profileList.controls['username'].touched))">*Please
+                                Enter User name</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password"
+                                [formControl]="profileListData.controls.profileList.controls.password"
+                                (input)="fieldInput()" />
+                            <span class="error"
+                                *ngIf="errorMsg||((!profileListData.controls.profileList.controls['password'].valid && profileListData.controls.profileList.controls['password'].touched))">*Please
+                                Enter Password Name</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="label" class="form-control" id="location"
+                        [formControl]="profileListData.controls.profileList.controls.location" (input)="fieldInput()"
+                        placeholder="latitude,longitude" disabled />
+
+                </div>
+                <div class="form-group">
+                    <label for="rank">Notification Token</label>
+                    <input type="number" class="form-control" id="rank"
+                        [formControl]="profileListData.controls.profileList.controls.notificationToken"
+                        (input)="fieldInput()" disabled />
+                </div>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name"
+                        [formControl]="profileListData.controls.profileList.controls.name" (input)="fieldInput()"
+                        placeholder="e.g. Anand" />
+
+                </div>
+                <div class="form-group">
+                    <label for="role">Add Role*</label>
+                    <select class="form-control" id="role"
+                        [formControl]="profileListData.controls.profileList.controls.role" >
+                        <ng-container *ngFor="let role of roleDate" >
+                            <option *ngIf="role.name != 'BE Admin'" [ngValue]="role">{{role.name}}</option>
+                        </ng-container>
+                    </select>
+                </div>
+                <div class="form-group" *ngIf="this.profileListData.controls.profileList.value.role.name == 'Consumer'">
+                    <label for="loyaltyLabel">Loyality label*</label>
+                    <select class="form-control" id="loyaltyLabel"
+                        [formControl]="profileListData.controls.profileList.controls.loyaltyLabel" >                     
+                            <option selected="true">Select label </option>
+                                <option *ngFor="let label of loyaltyLabel">{{label}}</option>
+        
+                    </select>
+                </div>
+                <button type="button" class="btn btn-primary" (click)="createprofileList()"
+                    [disabled]="!profileListData.valid">Save profile</button>
+            </form>
+            {{toggle}}
+        </div>
+    </div>
+</div>

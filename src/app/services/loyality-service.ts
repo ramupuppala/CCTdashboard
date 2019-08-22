@@ -1,81 +1,42 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment'
-
+import { HttpCallService } from './http-service';
 
 @Injectable(
 )
 export class LoyalityService {
+    appId:string="";
+    constructor(private httpClient: HttpClient,private httpCallService:HttpCallService) {  
+        this.appId=window.localStorage.getItem("app_id");
+     }
 
-    constructor(private httpClient: HttpClient) { }
-
-    getLoyalityList() {
-        const httpOptions = {
-            headers: new HttpHeaders({
-                'Content-Type': 'application/json;charset=UTF-8',
-                'x-access-token': window.localStorage.getItem("x-access-token"),
-                'refresh_token': window.localStorage.getItem("x-refresh-token")
-            })
-        };
+    getLoyalityList() {     
         const url = environment.api_endpoint + '/v2/list-loyality';
-        const appId = window.localStorage.getItem("app_id")
-        return this.httpClient.post(url, { appId: appId }, httpOptions).toPromise();
+        const appId =this.appId;        
+        return this.httpCallService.httpCall(url,"post",{appId});
     }
     createLoyalityList(data: any) {
-        const httpOptions = {
-            headers: new HttpHeaders({
-                'Content-Type': 'application/json;charset=UTF-8',
-                'x-access-token': window.localStorage.getItem("x-access-token"),
-                'refresh_token': window.localStorage.getItem("x-refresh-token")
-            })
-        };
-        const url = environment.api_endpoint + '/v2/loyality';
-        const appId = window.localStorage.getItem("app_id");
-        data.appId = appId;
-        console.log(data)
-        return this.httpClient.post(url, data, httpOptions).toPromise();
+        const url = environment.api_endpoint + '/v2/loyality';        
+        data.appId = this.appId;
+        return this.httpCallService.httpCall(url,"post",data);
     }
-    changeActiveState(data: any) {
-        const httpOptions = {
-            headers: new HttpHeaders({
-                'Content-Type': 'application/json;charset=UTF-8',
-                'x-access-token': window.localStorage.getItem("x-access-token"),
-                'refresh_token': window.localStorage.getItem("x-refresh-token")
-            })
-        };
+    changeActiveState(data: any) {        
         const url = environment.api_endpoint + '/v2/delete-attribute';
-        const appId = window.localStorage.getItem("app_id");
-        data.appId = appId;
-        return this.httpClient.post(url, data, httpOptions).toPromise();
+        data.appId = this.appId;
+        return this.httpCallService.httpCall(url,"post",data);
     }
-    getLabel(label: string) {
-        const httpOptions = {
-            headers: new HttpHeaders({
-                'Content-Type': 'application/json;charset=UTF-8',
-                'x-access-token': window.localStorage.getItem("x-access-token"),
-                'refresh_token': window.localStorage.getItem("x-refresh-token")
-            })
-        };
-        const url = environment.api_endpoint + '/v2/get-by-label';
-        const appId = window.localStorage.getItem("app_id");
-        return this.httpClient.post(url,
-            {
+    getLabel(label: string) {        
+        const url = environment.api_endpoint + '/v2/get-by-label';  
+            return this.httpCallService.httpCall(url,"post",{
                 label: label,
-                appId: appId
-            }, httpOptions).toPromise();
+                appId: this.appId
+            });
     }
-    editLoyalityList(data: any) {
-        const httpOptions = {
-            headers: new HttpHeaders({
-                'Content-Type': 'application/json;charset=UTF-8',
-                'x-access-token': window.localStorage.getItem("x-access-token"),
-                'refresh_token': window.localStorage.getItem("x-refresh-token")
-            })
-        };
+    editLoyalityList(data: any) {        
         const url = environment.api_endpoint + '/v2/update-attribute';
-        const appId = window.localStorage.getItem("app_id");
-        data.appId=appId;
-        return this.httpClient.post(url, data, httpOptions).toPromise();
+        data.appId=this.appId;
+        return this.httpCallService.httpCall(url,"post",data);
     }
 
 }
