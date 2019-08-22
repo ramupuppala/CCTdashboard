@@ -41,7 +41,7 @@ export class EditProfileListComponent implements OnInit {
         "loyaltyLabel": [""],
       })
     });
-    console.lo
+ 
   }
   ngOnInit() {
     this.p_id = this.route.snapshot.paramMap.get('p_id');

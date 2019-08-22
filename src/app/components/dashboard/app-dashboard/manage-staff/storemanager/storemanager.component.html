@@ -51,10 +51,10 @@
                         </div>
                         <div class="card-footer">
                             <div class="manage-assign-links">
-                                    <button class="btn btn-default btn-sm assign-btns" [routerLink]="['/']">Assign Brands</button>
-                                    <button class="btn btn-default btn-sm assign-btns" [routerLink]="['/']">Assign Store</button>
+                                    <button class="btn btn-default btn-sm assign-btns" [routerLink]="['/store-manager-assign-store/',profile.p_id]">Assign Brands</button>
+                                    <button class="btn btn-default btn-sm assign-btns" [routerLink]="['/store-manager-assign-store/',profile.p_id]">Assign Store</button>
                                     <button class="btn btn-default btn-sm assign-btns" [routerLink]="['/']">Assign Region</button>
-                                    <button class="btn btn-default btn-sm assign-btns" [routerLink]="['/']">Assigned Store</button>
+                                    <button class="btn btn-default btn-sm assign-btns" [routerLink]="['/store-manager-assigned-store',profile.p_id]">Assigned Store</button>
                             </div>
                         </div>
                     </div>

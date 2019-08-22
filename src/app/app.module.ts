@@ -9,6 +9,9 @@ import { BroadcastNotificationService } from './services/broadcast-notification-
 import { ManageStaffService } from './services/manage-staff-service';
 import { HttpCallService } from './services/http-service';
 import { ProfileListService } from './services/profile-list-service';
+import { BrandService } from './services/brand-list-service';
+
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -31,6 +34,11 @@ import { ProfileListComponent } from './components/dashboard/app-dashboard/profi
 import { UpdateCustomerIdComponent } from './components/dashboard/app-dashboard/profile-list/update-customer-id/update-customer-id.component';
 import { CreateProfileListComponent } from './components/dashboard/app-dashboard/profile-list/create-profile-list/create-profile-list.component';
 import { EditProfileListComponent } from './components/dashboard/app-dashboard/profile-list/edit-profile-list/edit-profile-list.component';
+import { BrandListComponent } from './components/dashboard/app-dashboard/brand-list/brand-list.component';
+import { CreateBrandListComponent } from './components/dashboard/app-dashboard/brand-list/create-brand-list/create-brand-list.component';
+import { EditBrandListComponent } from './components/dashboard/app-dashboard/brand-list/edit-brand-list/edit-brand-list.component';
+import { StoreManagerAssignStore } from './components/dashboard/app-dashboard/manage-staff/customercare/assing-store/store-manager-assign-store';
+import { StoreManagerAssignedStore } from './components/dashboard/app-dashboard/manage-staff/customercare/assigned-store/store-manager-assigned-store';
 
 @NgModule({
   declarations: [
@@ -46,11 +54,16 @@ import { EditProfileListComponent } from './components/dashboard/app-dashboard/p
     CustomercareComponent,
     StoremanagerComponent,
     AssingStoreComponent,
+    StoreManagerAssignStore,
     AssignedStoreComponent,
+    StoreManagerAssignedStore,
     ProfileListComponent,
     UpdateCustomerIdComponent,
     CreateProfileListComponent,
     EditProfileListComponent,
+    BrandListComponent,
+    CreateBrandListComponent,
+    EditBrandListComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,7 +74,7 @@ import { EditProfileListComponent } from './components/dashboard/app-dashboard/p
     RouterModule.forRoot(ROUTES),
     NgMultiSelectDropDownModule.forRoot()
   ],
-  providers: [UserService, LoyalityService,BroadcastNotificationService,ManageStaffService,HttpCallService,ProfileListService],
+  providers: [UserService, LoyalityService,BroadcastNotificationService,ManageStaffService,HttpCallService,ProfileListService,BrandService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

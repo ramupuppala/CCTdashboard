@@ -6,12 +6,12 @@ import { ManageStaffService } from '../../../../../../services/manage-staff-serv
   templateUrl: './assigned-store.component.html',
   styleUrls: ['../../manage.component.css']
 })
-export class AssignedStoreComponent implements OnInit {
+export class StoreManagerAssignedStore implements OnInit {
   constructor(private router: Router,private route: ActivatedRoute,private manageStaffService:ManageStaffService) { }
   stores=[];
   p_id:string="";
   getAssignedStoreList(){
-    this.manageStaffService.getAssignedStoreListCustomercare(this.p_id).then(((response: any) => {
+    this.manageStaffService.getAssignedStoreToStoreManager(this.p_id).then(((response: any) => {
       if (response.status) {
         this.stores = response.data;
         console.log(this.stores)
@@ -29,7 +29,7 @@ export class AssignedStoreComponent implements OnInit {
      id:id,
      p_id:this.p_id
    }
-    this.manageStaffService.unSubscribeToCustomercare(data).then(((response: any) => {
+    this.manageStaffService.unSubscribeToStoreManger(data).then(((response: any) => {
       if (response.status) {      
         alert("Successfully Unsubscribe"); 
         this.getAssignedStoreList();

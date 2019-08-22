@@ -6,7 +6,7 @@ import { ManageStaffService } from '../../../../../../services/manage-staff-serv
   templateUrl: './assing-store.component.html',
   styleUrls: ['../../manage.component.css']
 })
-export class AssingStoreComponent implements OnInit {
+export class StoreManagerAssignStore implements OnInit {
 
   constructor(private router: Router,private route: ActivatedRoute, private manageStaffService:ManageStaffService) { }
   stores=[];
@@ -23,15 +23,13 @@ export class AssingStoreComponent implements OnInit {
   ngOnInit() {
     this.p_id = this.route.snapshot.paramMap.get('id');
     this.getEzoneStores();
-    console.log("sdfsdfsdf")
   }
   assignStore(id:string){
-    console.log(id);
     let data={
       id:id,
       p_id:this.p_id
     }
-    this.manageStaffService.assignStore(data).then(((response: any) => {
+    this.manageStaffService.assignStoreToStoreManager(data).then(((response: any) => {
       if (response.status) {       
         console.log(response.data);
         alert("Successfully Assigned")

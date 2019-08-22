@@ -1,0 +1,43 @@
+<div class="container ">
+    <div class="card mt-3">
+        <div class="card-body">
+            <h5>Brands</h5>
+        </div>
+    </div>
+    <div class="search-brand-list mt-3">
+        <div class="search-brand-list__input">
+            <div class="form-group">              
+                <input type="text" class="form-control" [value]="brandName" placeholder="Enter Your Search Brand Name" (change)="onChangeByInput($event)"/>             
+            </div>
+        </div>
+        <div class="search-brand-list__btns">
+            <button type="button" class="btn btn-primary btn-sm " (click)="getBrandList()">Search</button>
+            <button type="button" class="btn btn-primary btn-sm " (click)="clearBrandList()">Clear</button>
+        </div>
+    </div>
+    <div class="card mt-3" *ngFor="let list of brandList">
+        <div class="card-header">
+            <span class="brands-list-id">{{list.br_id}}</span>
+            <div class="brand-list-operations">
+                    <button class="btn btn-default text-primary btn-sm " [routerLink]="['/edit-brand-list/',list.br_id]">Edit</button> | 
+                    <button class="btn btn-default text-primary btn-sm " (click)="deleteBrandList(list.br_id)">Delete</button> | 
+                    <button class="btn btn-default text-primary btn-sm " [routerLink]="['/manage-staff-assign-store/','/customercare']">Manage Staff</button>
+            </div>           
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-4">
+                    <p>Name:</p>
+                </div>
+                <div class="col-6">
+                    <p>{{list.name}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="brandList.length == 0">
+            <div class="jumbotron no-records-found mt-3">
+                <h3>No Records Found</h3>
+            </div>
+        </div>
+</div>

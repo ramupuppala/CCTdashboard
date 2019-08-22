@@ -15,8 +15,10 @@ import { BroadcastNotificationComponent } from './components/dashboard/app-dashb
 import { CustomercareComponent } from './components/dashboard/app-dashboard/manage-staff/customercare/customercare.component';
 import { AssingStoreComponent } from './components/dashboard/app-dashboard/manage-staff/customercare/assing-store/assing-store.component';
 import { AssignedStoreComponent } from './components/dashboard/app-dashboard/manage-staff/customercare/assigned-store/assigned-store.component';
+import { StoreManagerAssignedStore } from './components/dashboard/app-dashboard/manage-staff/customercare/assigned-store/store-manager-assigned-store';
 
 import { StoremanagerComponent } from './components/dashboard/app-dashboard/manage-staff/storemanager/storemanager.component';
+import { StoreManagerAssignStore } from './components/dashboard/app-dashboard/manage-staff/customercare/assing-store/store-manager-assign-store';
 
 //Profile List
 import { ProfileListComponent } from './components/dashboard/app-dashboard/profile-list/profile-list.component';
@@ -25,11 +27,16 @@ import { CreateProfileListComponent } from './components/dashboard/app-dashboard
 import { EditProfileListComponent } from './components/dashboard/app-dashboard/profile-list/edit-profile-list/edit-profile-list.component';
 
 
+//Brand List
+import { BrandListComponent } from './components/dashboard/app-dashboard/brand-list/brand-list.component';
+import { CreateBrandListComponent } from './components/dashboard/app-dashboard/brand-list/create-brand-list/create-brand-list.component';
+import { EditBrandListComponent } from './components/dashboard/app-dashboard/brand-list/edit-brand-list/edit-brand-list.component';
+
+
 export const ROUTES: Route[] = [
     {
         path: 'login', component: LoginComponent
-    },
-   
+    },   
     {
         path: '', redirectTo: 'login', pathMatch: 'full'
     },
@@ -55,10 +62,16 @@ export const ROUTES: Route[] = [
         path: 'manage-customer-care', component: CustomercareComponent,      
     },
     {
-        path: 'manage-staff-assign-store/:id/:type', component: AssingStoreComponent,      
+        path: 'manage-staff-assign-store/:id', component: AssingStoreComponent,      
     },
     {
-        path: 'manage-staff-assigned-store/:id/:type', component: AssignedStoreComponent,      
+        path: 'store-manager-assign-store/:id', component: StoreManagerAssignStore,      
+    },
+    {
+        path: 'manage-staff-assigned-store/:id', component: AssignedStoreComponent,      
+    },
+    {
+        path: 'store-manager-assigned-store/:id', component: StoreManagerAssignedStore,      
     },
     {
         path: 'manage-store-manager', component: StoremanagerComponent
@@ -77,5 +90,14 @@ export const ROUTES: Route[] = [
     },
     {
         path: 'edit-profile-list/:p_id', component: EditProfileListComponent
+    },
+    {
+        path: 'brand-list', component: BrandListComponent
+    },
+    {
+        path: 'create-brand-list', component: CreateBrandListComponent
+    },
+    {
+        path: 'edit-brand-list/:br_id', component: EditBrandListComponent
     }
 ]

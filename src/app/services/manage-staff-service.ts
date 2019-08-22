@@ -29,7 +29,7 @@ export class ManageStaffService {
         const url = environment.api_endpoint + '/v2/profile/store-manager/';
         return this.httpCallService.httpCall(url, "post",  { app_id: this.appId ,username:username,skip:0,limit:10});       
     } 
-    getEzoneStoresForCustomercare() {       
+    getEzoneStores() {       
         const url = environment.api_endpoint + '/v1/all-store/';
         return this.httpCallService.httpCall(url, "post",  { app_id: this.appId});       
     } 
@@ -43,13 +43,26 @@ export class ManageStaffService {
         return this.httpCallService.httpCall(url, "post",  { app_id: this.appId,'p_id': p_id});       
     } 
 
-    unSubscribeToStore(data:any){
+    unSubscribeToCustomercare(data:any){
         console.log(data);
         const url = environment.api_endpoint + '/v1/profile/customer-care-admin/remove-store';
         return this.httpCallService.httpCall(url, "post",  { 'app_id': this.appId, 'p_id': data.p_id, 'st_id':  data.id}); 
     }
 
+    assignStoreToStoreManager(data:any){
+        const url = environment.api_endpoint + '/v1/profile/store-manager/assign-store/';
+        return this.httpCallService.httpCall(url, "post",  { 'app_id': this.appId, 'p_id': data.p_id, 'st_id':  data.id}); 
+    }
 
- 
+    getAssignedStoreToStoreManager(p_id:string) {       
+        const url = environment.api_endpoint + '/v1/profile/store-manager/get-assigned-store/';
+        return this.httpCallService.httpCall(url, "post",  { app_id: this.appId,'p_id': p_id});       
+    } 
+    
+    unSubscribeToStoreManger(data:any){
+        console.log(data);
+        const url = environment.api_endpoint + '/v1/profile/store-manager/remove-store/';
+        return this.httpCallService.httpCall(url, "post",  { 'app_id': this.appId, 'p_id': data.p_id, 'st_id':  data.id}); 
+    }
 
 }

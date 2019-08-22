@@ -1,0 +1,23 @@
+.search-brand-list__btns .btn:nth-child(2){
+    margin-left:10px;
+}
+
+.brand-list-operations{
+    float: right;
+}
+
+.brands-list-id{
+    font-size: 0.8em;
+}
+
+@media (min-width:768px){
+    .search-brand-list{
+        display: flex;
+    }
+    .search-brand-list__input{
+        flex-grow: 1;
+        margin-right: 10px;
+    }
+    
+}
+
