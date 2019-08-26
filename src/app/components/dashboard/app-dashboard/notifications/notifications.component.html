@@ -1,0 +1,81 @@
+<div class="container">
+    <div class="card mt-3">
+        <div class="body">
+            <h4 class="notification-heading"><span>Notifications</span>
+
+            </h4>
+        </div>
+    </div>
+    <div class="card mt-3">
+        <div class="card-body">
+            <div class="search-labels">
+                <label class="form-check-label" for="radio1">
+                    <input type="radio" class="form-check-input" id="radio1" name="optradio" value="GEOZONE"
+                        (change)="onChange($event)" checked />
+                    <span>Search Zone</span>
+                </label>
+                <label class="form-check-label" for="radio2">
+                    <input type="radio" class="form-check-input" id="radio2" name="optradio" value="STORE"
+                        (change)="onChange($event)" /><span>Search Store</span>
+                </label>
+                <button class="btn btn-primary" (click)="getNotificationList()">Search</button>
+            </div>
+        </div>
+    </div>
+    <div class="card mt-3" *ngIf="notificationList.length !== 0">
+        <div class="card-header">
+            <h5>Matching Zone Notifications</h5>
+        </div>
+        <div class="card-body">
+            <div class="row notification-card" *ngFor="let item of notificationList" >
+                <div class="col-sm-3">
+                    <div class="notification">
+                        <label for="">Notification id</label>
+                        <span style="font-size: 0.8em;">{{item.nt_id}}</span>
+                    </div>
+                    <div class="notification"> 
+                        <label for="">Notification Text</label>
+                        {{item.notification[0].text}} <br>
+                        <span style="font-size: 0.8em; color: #666;">{{item.notification[0].sub_text}}</span>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="notification">
+                        <label for="">Notification Type</label>
+                        {{item.notification_type[0].name}}
+                    </div>
+                    <div *ngIf="item.notification_type[0].name == 'Loyalty'" class="notification">
+                        <label for="">Loyalty Label</label>
+                        {{item.notification_labels.length>0?item.notification_labels[0].label:''}}
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="notification">
+                        <label for="">Action Type</label>
+                        {{item.notification_action_type[0].name}}
+                    </div>
+                    <div class="notification">
+                        <label for="">Match Type</label>
+                        {{item.notification[0].notification_match_type}}
+                    </div>
+                    <div *ngIf="item.notification[0].notification_match_type == 'BRAND'" class="notification">
+                        <label for="">Associated Brands</label>
+                        <span *ngFor="let brand of item.notification_brands" :key="'brand'+index1"
+                            style="font-size: 0.9em;">
+                            {{brand.name}} <span *ngIf="index1 < item.notification_brands.length - 1">, </span>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="btn btn-primary notification-btns" (click)="onDelete(item.nt_id)">Delete</div>
+                    <div class="btn btn-primary notification-btns">Edit</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="notificationList.length == 0" class="mt-3">
+            <div class="jumbotron no-records-found">
+                <h3>No Notification Found</h3>
+            </div>
+        </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-body">
+            <div class="form-group">
+                <select name="" id="" class="form-control" (change)="selectedRole($event)">
+                    <option value="" disabled="true">Select Relation list</option>
+                    <option  *ngFor="let relation of relations">
+                            ( {{relation.relation.node1_arg_value}} : {{relation.relation.node1_type}} ) -- [: {{relation.relation.relation}} ] -> ( {{relation.relation.node2_arg_value}} : {{relation.relation.node2_type}} )
+                    </option>
+                </select>
+            </div>
+            <button class="btn btn-primary">
+                Create Relations
+            </button>
+        </div>
+    </div>
+</div>

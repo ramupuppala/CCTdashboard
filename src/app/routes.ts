@@ -32,6 +32,12 @@ import { BrandListComponent } from './components/dashboard/app-dashboard/brand-l
 import { CreateBrandListComponent } from './components/dashboard/app-dashboard/brand-list/create-brand-list/create-brand-list.component';
 import { EditBrandListComponent } from './components/dashboard/app-dashboard/brand-list/edit-brand-list/edit-brand-list.component';
 
+//Relations List
+import { RelationsListComponent } from './components/dashboard/app-dashboard/relations-list/relations-list.component';
+
+//Notifications
+import { NotificationsComponent } from './components/dashboard/app-dashboard/notifications/notifications.component';
+import { CreateNotificationsComponent } from './components/dashboard/app-dashboard/notifications/create-notifications/create-notifications.component';
 
 export const ROUTES: Route[] = [
     {
@@ -99,5 +105,14 @@ export const ROUTES: Route[] = [
     },
     {
         path: 'edit-brand-list/:br_id', component: EditBrandListComponent
+    },
+    {
+        path: 'relations-list', component: RelationsListComponent
+    },
+    {
+        path: 'notifications', component: NotificationsComponent
+    },
+    {
+        path: 'create-notification', component: CreateNotificationsComponent
     }
 ]

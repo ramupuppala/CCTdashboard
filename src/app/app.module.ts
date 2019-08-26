@@ -10,7 +10,8 @@ import { ManageStaffService } from './services/manage-staff-service';
 import { HttpCallService } from './services/http-service';
 import { ProfileListService } from './services/profile-list-service';
 import { BrandService } from './services/brand-list-service';
-
+import { RelationsListService } from './services/relations-list-service';
+import { NotificationsService } from './services/notification-service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -39,6 +40,9 @@ import { CreateBrandListComponent } from './components/dashboard/app-dashboard/b
 import { EditBrandListComponent } from './components/dashboard/app-dashboard/brand-list/edit-brand-list/edit-brand-list.component';
 import { StoreManagerAssignStore } from './components/dashboard/app-dashboard/manage-staff/customercare/assing-store/store-manager-assign-store';
 import { StoreManagerAssignedStore } from './components/dashboard/app-dashboard/manage-staff/customercare/assigned-store/store-manager-assigned-store';
+import { RelationsListComponent } from './components/dashboard/app-dashboard/relations-list/relations-list.component';
+import { NotificationsComponent } from './components/dashboard/app-dashboard/notifications/notifications.component';
+import { CreateNotificationsComponent } from './components/dashboard/app-dashboard/notifications/create-notifications/create-notifications.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +68,9 @@ import { StoreManagerAssignedStore } from './components/dashboard/app-dashboard/
     BrandListComponent,
     CreateBrandListComponent,
     EditBrandListComponent,
+    RelationsListComponent,
+    NotificationsComponent,
+    CreateNotificationsComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,7 +81,7 @@ import { StoreManagerAssignedStore } from './components/dashboard/app-dashboard/
     RouterModule.forRoot(ROUTES),
     NgMultiSelectDropDownModule.forRoot()
   ],
-  providers: [UserService, LoyalityService,BroadcastNotificationService,ManageStaffService,HttpCallService,ProfileListService,BrandService],
+  providers: [UserService, LoyalityService,BroadcastNotificationService,ManageStaffService,HttpCallService,ProfileListService,BrandService,RelationsListService,NotificationsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

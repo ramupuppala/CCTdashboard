@@ -12,12 +12,12 @@ export class LoginComponent implements OnInit{
     public submitted = false;
     public status:boolean=true;
     public validation:string="";
-    public login = {
-        "user": {
-            "username": "",
-            "password": ""
-        }
-    };
+    // public login = {
+    //     "user": {
+    //         "username": "",
+    //         "password": ""
+    //     }
+    // };
 
     public errorMsg: boolean = false;
     public marked: boolean = false;
