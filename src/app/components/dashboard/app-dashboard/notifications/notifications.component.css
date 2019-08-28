@@ -57,6 +57,7 @@ font-weight: 650;
         padding: 0.5em;
         margin: 0.5em;
     }
+    
 }
 
 .notification-card
@@ -134,4 +135,17 @@ font-weight: 600;
 }
 .matched-notification__id{
 font-size: 0.7em;
+}
+
+.notification_label_input{
+    font-size: 0.8em;
+    font-weight: 650;
+}
+
+@media(min-width:767px){
+    .btn-center{
+        position: relative;
+        top:35%;
+        /* transform: translateY(-50%); */
+    }
 }

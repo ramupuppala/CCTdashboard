@@ -48,8 +48,33 @@ export class NotificationsService {
     getBrands(){
         const url = environment.api_endpoint + '/v1/brand-for-dropdown/';
         return this.httpCallService.httpCall(url, "post", {
-            "app_id":this.appId
+            "app_id":this.appId,
         });
+    }
+    getEzones(geozone_name:string){
+        const url = environment.api_endpoint + '/v1/get-engagement-zone-for-geozone/';
+        return this.httpCallService.httpCall(url, "post", {
+            "app_id":this.appId,
+            geozone_name
+        });
+    }
+    getStores(ezone_name: string){
+        const url = environment.api_endpoint + '/v1/get-stores-for-ezone/';
+        return this.httpCallService.httpCall(url, "post", {
+            "app_id":this.appId,
+            ezone_name
+        });
+    }    
+   
+    filterZeozoneStoreForNotification(data:any){
+        const url = environment.api_endpoint + '/v1/filter-geozone-store-for-notification/';
+        data.app_id=this.appId;
+        return this.httpCallService.httpCall(url, "post",data);
+    }
+
+    getProfileLabel(){
+        const url = environment.api_endpoint + '/v2/get-profile-label';
+        return this.httpCallService.httpCall(url, "post", {appId:this.appId});
     }
     getSelectedNotifiationType(){
         const url = environment.api_endpoint + '/v1/notification-types/get/';
@@ -59,5 +84,11 @@ export class NotificationsService {
         const url = environment.api_endpoint + '/v1/notification-action-types/get/';
         return this.httpCallService.httpCall(url, "post", {});
     }
+    saveNotificationList(data:any,payloadUrl){
+        const url = environment.api_endpoint + payloadUrl;
+        data.app_id=this.appId;
+        return this.httpCallService.httpCall(url, "post", data);
+    }
+
 
 }

@@ -1,199 +1,374 @@
 <div class="create-notification mt-3">
-    <div class="card">
-        <div class="card-header">
-            <div class="search-labels">
-                <label class="form-check-label" for="radio1">
-                    <input type="radio" class="form-check-input" id="radio1" name="notification" value="GEOZONE"
-                        (change)="onChange($event)" checked />
-                    <span>Zone Notification</span>
-                </label>
-                <label class="form-check-label" for="radio2">
-                    <input type="radio" class="form-check-input" id="radio2" name="notification" value="STORE"
-                        (change)="onChange($event)" /><span>Store Notification</span>
-                </label>
-
-            </div>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="form-check-inline">
-                        <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="optradio" value="COUNTRY"  (change)="onSearchWith($event)"/>Search by Country
-                        </label>
-                    </div>
-                    <div class="form-check-inline">
-                        <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="optradio" value="STATE" (change)="onSearchWith($event)">Searcy by State
-                        </label>
-                    </div>
-                    <div class="form-check-inline">
-                        <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="optradio" value="CITY" (change)="onSearchWith($event)">Search by City
-                        </label>
-                    </div>
-                    <div class="form-check-inline">
-                        <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="optradio" value="GEOZONE" (change)="onSearchWith($event)" checked>Search by Zone
-                        </label>
-                    </div>
-                    <div class="form-check-inline" *ngIf="search_for === 'STORE'">
-                        <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="optradio" value="STORE" (change)="onSearchWith($event)">Search by Store
-                        </label>
-                    </div>
+        <div class="card">
+            <div class="card-header">
+                <div class="search-labels">
+                    <label class="form-check-label" for="radio1">
+                        <input type="radio" class="form-check-input" id="radio1" name="notification" value="GEOZONE"
+                            (change)="onChange($event)" checked />
+                        <span>Zone Notification</span>
+                    </label>
+                    <label class="form-check-label" for="radio2">
+                        <input type="radio" class="form-check-input" id="radio2" name="notification" value="STORE"
+                            (change)="onChange($event)" /><span>Store Notification</span>
+                    </label>
+    
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-2">
-                    <div class="form-group">
-                        <label for="country"><small>Country</small></label>
-                        <select class="form-control" id="country" (change)="getState($event)">
-                            <option *ngFor="let country of all_country_dropdown">{{country}}</option>
-                            
-                        </select>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-check-inline">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="optradio" value="COUNTRY"
+                                    (change)="onSearchWith($event)" />Search by Country
+                            </label>
+                        </div>
+                        <div class="form-check-inline">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="optradio" value="STATE"
+                                    (change)="onSearchWith($event)">Searcy by State
+                            </label>
+                        </div>
+                        <div class="form-check-inline">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="optradio" value="CITY"
+                                    (change)="onSearchWith($event)">Search by City
+                            </label>
+                        </div>
+                        <div class="form-check-inline">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="optradio" value="GEOZONE"
+                                    (change)="onSearchWith($event)" checked>Search by Zone
+                            </label>
+                        </div>
+                        <div class="form-check-inline" *ngIf="search_for === 'STORE'">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="optradio" value="STORE"
+                                    (change)="onSearchWith($event)">Search by Store
+                            </label>
+                        </div>
                     </div>
                 </div>
-                <div class="col-sm-2" *ngIf="showStateDropdown()">
-                    <div class="form-group">
-                        <label for="state"><small>State</small></label>
-                        <select class="form-control" id="state" (change)="getCities($event)">
-                            <option *ngFor="let state of all_states_dropdown">{{state}}</option>
+                <div class="row mt-3">
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label for="country" class="notification_label_input">Country</label>
+                            <select class="form-control" id="country" (change)="getState($event)">
+                                <option disabled="true">Select Country</option>
+                                <option *ngFor="let country of all_country_dropdown">{{country}}</option>
+    
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-2" *ngIf="showStateDropdown()">
+                        <div class="form-group">
+                            <label for="state" class="notification_label_input">State</label>
+                            <select class="form-control" id="state" (change)="getCities($event)">
+                                <option disabled="true">Select State</option>
+                                <option *ngFor="let state of all_states_dropdown">{{state}}</option>
+    
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-2" *ngIf="showCityDropdown()">
+                        <div class="form-group">
+                            <label for="city" class="notification_label_input">City</label>
+                            <select class="form-control" id="city" (change)="getZone($event)">
+                                <option disabled="true">Select City</option>
+                                <option *ngFor="let city of all_city_dropdown">{{city}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-2" *ngIf="showGeozoneDropdown()">
+                        <div class="form-group">
+                            <label for="zone" class="notification_label_input">Zone</label>
+                            <select class="form-control" id="zone" (change)="getEzone($event)">
+                                <option disabled="true">Select Zone</option>
+                                <option *ngFor="let zone of geozone_dropdown">{{zone.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-2" *ngIf="showEzoneDropdown()">
+                        <div class="form-group">
+                            <label for="engagement-zone" class="notification_label_input">Engagement Zone</label>
+                            <select class="form-control" id="engagement-zone" (change)="getStores($event)">
+                                <option disabled="true">Select Engagement Zone</option>
+                                <option *ngFor="let ezone of ezone_dropdown">{{ezone.name}}</option>
+    
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-2" *ngIf="showStoreDropdown()">
+                        <div class="form-group">
+                            <label for="stores" class="notification_label_input">Stores:</label>
+                            <select class="form-control" id="stores" (change)="getStoresValue($event)">
+                                <option disabled="true">Select Store</option>
+                                <option *ngFor="let store of store_dropdown">{{store.name}}</option>
+    
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-2" *ngIf="showBrandDropdown()">
+                        <div class="form-group">
+                            <label for="brands" class="notification_label_input">Brands:</label>
+                            <select class="form-control" id="brands" (change)="getBrandValue($event)">
+                                <option *ngFor="let brand of brand_dropdown" [ngValue]="brand">{{brand.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+    
+                    <div class="col-sm-2">
+                        <button class="btn btn-primary btn-center" (click)="filterZeozoneStoreForNotification()">
+                            Search
+                        </button>
+                    </div>
+    
+                </div>
+                <div class="row mt-3">
+                    <div class="col-sm-12" *ngIf="search_with== 'COUNTRY'">
+                        <div class="selected_zone_store mb-3">
+                            <h6>Selected Country</h6>
+                        </div>
+                        <p *ngFor="let item of search_query.country;let i=index">
+                            <i class="fa fa-times-circle" (click)="removeQueryParam(item, i, search_query.country)"></i>
+                            <span>{{item}}</span>
+                        </p>
+                    </div>
+                    <div class="col-sm-12" *ngIf="search_with== 'CITY'">
+                        <div class="selected_zone_store">
+                            <h6>Selected Cities</h6>
+                        </div>
+                        <p *ngFor="let item of search_query.city;let i=index">
+                            <i class="fa fa-times-circle" (click)="removeQueryParam(item, i, search_query.city)"></i>
+                            <span>{{item}}</span>
+                        </p>
+                    </div>
+                    <div class="col-sm-12" *ngIf="search_with== 'STATE'">
+                        <div class="selected_zone_store">
+                            <h6>Selected States</h6>
+                        </div>
+                        <p *ngFor="let item of search_query.state;let i=index">
+                            <i class="fa fa-times-circle" (click)="removeQueryParam(item, i, search_query.state)"></i>
+                            <span>{{item}}</span>
+                        </p>
+                    </div>
+                    <div class="col-sm-12" *ngIf="search_with== 'GEOZONE'">
+                        <div class="selected_zone_store">
+                            <h6>Selected Zones</h6>
+                        </div>
+                        <p *ngFor="let item of search_query.geozone_name;let i=index">
+                            <i class="fa fa-times-circle"
+                                (click)="removeQueryParam(item, i, search_query.geozone_name)"></i>
+                            <span>{{item}}</span>
+                        </p>
+                    </div>
+                    <div class="col-sm-12" *ngIf="search_with== 'EZONE'">
+                        <div class="selected_zone_store">
+                            <h6>Selected EZones</h6>
+                        </div>
+                        <p *ngFor="let item of search_query.ezone_name;let i=index">
+                            <i class="fa fa-times-circle" (click)="removeQueryParam(item, i, search_query.ezone_name)"></i>
+                            <span>{{item}}</span>
+                        </p>
+                    </div>
+                    <div class="col-sm-12" *ngIf="search_with== 'STORE'">
+                        <div class="selected_zone_store">
+                            <h6>Selected Stores</h6>
+                        </div>
+                        <p *ngFor="let item of search_query.store_name;let i=index">
+                            <i class="fa fa-times-circle" (click)="removeQueryParam(item, i, search_query.store_name)"></i>
+                            <span>{{item}}</span>
+                        </p>
+                    </div>
+    
+                </div>
+                <div class="matched-notification" *ngIf="response_title !=''">
+                    <div class="matched-notification__heading">
+                        <span>{{response_title}} Matched...</span>
+                        <button class="btn btn-primary btn-sm " (click)="CreateNotification()">Create notification for
+                            {{search_result.length}}
+                            {{response_title}}</button>
+                    </div>
+                    <div class="matched-notification__body">
+                        <p *ngFor="let result of search_result"><span
+                                class="matched-notification__name">{{result.name}}</span> | <span
+                                class="matched-notification__id">{{result.uuid}}</span></p>
+                    </div>
+                </div>
+                <form *ngIf="response_title !='' && isCreateNotificaton && search_result.length>0" [formGroup]="notificationListData"
+                    (keyup)="$event.keyCode == 13 &&saveNotificationList()">
+                    <div class="row mt-3">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="text" class="notification_label_input">Text</label>
+                                <input type="text" class="form-control"
+                                    [formControl]="notificationListData.controls.notificationList.controls.text"
+                                     />
+                                <small id="text" class="form-text text-muted"
+                                    *ngIf="errorMsg||((!notificationListData.controls.notificationList.controls['text'].valid && notificationListData.controls.notificationList.controls['text'].touched))">We'll
+                                    never share your email with anyone
+                                    else.</small>
+                                <small id="text" class="form-text text-muted"
+                                    >available wildcards <span *ngFor="let item of available_wildcards">{{item}}, </span></small>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="text" class="notification_label_input">Sub Text</label>
+                                <input type="text" class="form-control"
+                                    [formControl]="notificationListData.controls.notificationList.controls.subtext"
+                                     />
+                                <small id="subtext" class="form-text text-muted">available wildcards <span *ngFor="let item of available_wildcards_sub_text">{{item}}, </span></small>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="text" class="notification_label_input">Image Url</label>
+                                <input type="text" class="form-control"
+                                    [formControl]="notificationListData.controls.notificationList.controls.image_url"
+                                     />
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="text" class="notification_label_input">Action Url</label>
+                                <input type="text" class="form-control"
+                                    [formControl]="notificationListData.controls.notificationList.controls.action_url" />
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="" class="notification_label_input"> Matching Type<span style="color: red">*</span></label>
+                                <select
+                                    [formControl]="notificationListData.controls.notificationList.controls.notification_match_type"
+                                    placeholder="Please select notification match type" class="form-control">
+                                    <option label="General" value="GENERAL"></option>
+                                    <option label="Multi Match Brand" value="MULTI_MATCH_BRAND"
+                                        *ngIf="search_for!='GEOZONE'"></option>
+                                    <option label="Multi Match Store" value="MULTI_MATCH_STORE"
+                                        *ngIf="search_for!='GEOZONE'"></option>
+                                    <option label="Brand" value="BRAND"
+                                        *ngIf="search_for!='GEOZONE' && brand_selected_for_current_search.br_id"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="" class="notification_label_input">Notification Type<span style="color: red">*</span></label>
+                                <select
+                                    [formControl]="notificationListData.controls.notificationList.controls.selected_notification_type" class="form-control">
+                                    <option *ngFor="let notification_type of notification_types" [ngValue]="notification_type">{{notification_type.name}}</option>                               
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4" >
+                            <div class="form-group">
+                                <label for="" class="notification_label_input"> Action Type<span style="color: red">*</span></label>
+                                <select
+                                    [formControl]="notificationListData.controls.notificationList.controls.action_type" class="form-control">
+                                    <option *ngFor="let notification_action_type of notification_action_types" [ngValue]="notification_action_type">{{notification_action_type.name}}</option>                               
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-12" *ngIf="notificationListData.controls.notificationList.value.selected_notification_type.name == 'Loyalty'">
+                            <div class="form-group">
+                                <label for="" class="notification_label_input"> Loyality Label<span style="color: red">*</span></label>
+                                <select
+                                    [formControl]="notificationListData.controls.notificationList.controls.label" class="form-control">
+                                    <option *ngFor="let label of labels">{{label}}</option>                               
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-12" *ngIf="notificationListData.controls.notificationList.value.selected_notification_type.name == 'Inventory'">
+                            <div class="form-group">
+                                <label for="inventor" class="notification_label_input"> Inventer <span style="color: red">*</span></label>                           
+                                <textarea class="form-control" rows="5" id="inventor"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="text" class="notification_label_input">Start Date</label>
+                                <!-- <input [owlDateTimeTrigger]="dt" [owlDateTime]="dt">
+                                    <owl-date-time #dt></owl-date-time> -->
+                                <input type="date" class="form-control"
+                                    [formControl]="notificationListData.controls.notificationList.controls.validity_start" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="text" class="notification_label_input">Validity Untill*</label>
+                                <input type="date" class="form-control"
+                                    [formControl]="notificationListData.controls.notificationList.controls.validity_end" />
+                            </div>
+                        </div>                       
+                                <div class="col-sm-2" >
+                                        <div class="form-group">
+                                            <label for="" class="notification_label_input">SUNDAY<span style="color: red">*</span></label>
+                                            <input type="text" class="form-control"
+                                                [formControl]="notificationListData.controls.notificationList.controls.active_days.controls.SUNDAY" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2" >
+                                        <div class="form-group">
+                                            <label for="" class="notification_label_input">MONDAY<span style="color: red">*</span></label>
+                                            <input type="text" class="form-control"
+                                                [formControl]="notificationListData.controls.notificationList.controls.active_days.controls.MONDAY" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2" >
+                                        <div class="form-group">
+                                            <label for="" class="notification_label_input">TUESDAY<span style="color: red">*</span></label>
+                                            <input type="text" class="form-control"
+                                                [formControl]="notificationListData.controls.notificationList.controls.active_days.controls.TUESDAY" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2" >
+                                        <div class="form-group">
+                                            <label for="" class="notification_label_input">WEDNESDAY<span style="color: red">*</span></label>
+                                            <input type="text" class="form-control"
+                                                [formControl]="notificationListData.controls.notificationList.controls.active_days.controls.WEDNESDAY" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2" >
+                                        <div class="form-group">
+                                            <label for="" class="notification_label_input">THURSDAY<span style="color: red">*</span></label>
+                                            <input type="text" class="form-control"
+                                                [formControl]="notificationListData.controls.notificationList.controls.active_days.controls.THURSDAY" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2" >
+                                        <div class="form-group" >
+                                            <label for="" class="notification_label_input">FRIDAY<span style="color: red">*</span></label>
+                                            <input type="text" class="form-control"
+                                                [formControl]="notificationListData.controls.notificationList.controls.active_days.controls.FRIDAY" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2" >
+                                        <div class="form-group">
+                                            <label for="" class="notification_label_input">SATURDAY<span style="color: red">*</span></label>
+                                            <input type="text" class="form-control"
+                                                [formControl]="notificationListData.controls.notificationList.controls.active_days.controls.SATURDAY" />
+                                        </div>
+                                    </div>
                      
-                        </select>
+                        
+                        <div class="col-sm-2">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input"
+                                        [formControl]="notificationListData.controls.notificationList.controls.isActive"
+                                        checked>isActive
+                                </label>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-2" *ngIf="showCityDropdown()">
-                    <div class="form-group">
-                        <label for="city"><small>City</small></label>
-                        <select class="form-control" id="city" (change)="getZone($event)">
-                            <option *ngFor="let city of all_city_dropdown">{{city}}</option>                            
-                        </select>
-                    </div>
-                </div>
-                <div class="col-sm-2" *ngIf="showGeozoneDropdown()">
-                    <div class="form-group">
-                        <label for="zone"><small>Zone</small></label>
-                        <select class="form-control" id="zone">
-                            <option *ngFor="let zone of ezone_dropdown">{{zone.name}}</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-sm-2" *ngIf="showEzoneDropdown()">
-                    <div class="form-group">
-                        <label for="engagement-zone" >Engagement Zone</label>
-                        <select class="form-control" id="engagement-zone" >
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-sm-2" *ngIf="showStoreDropdown()">
-                    <div class="form-group">
-                        <label for="stores"  >Stores:</label>
-                        <select class="form-control" id="stores">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-sm-2" *ngIf="showBrandDropdown()">
-                    <div class="form-group">
-                        <label for="brands">Brands:</label>
-                        <select class="form-control" id="brands">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                        </select>
-                    </div>
-                </div>
-               ss
-                <div class="col-sm-2">
-                    <button class="btn btn-primary">
-                        Search
-                    </button>
-                </div>
-
+                    <button class="btn btn-primary m-2"  
+                    [disabled]="!notificationListData.valid"
+                     (click)="saveNotificationList()" >Save zone Notification</button>
+                    <div class="btn btn-primary m-2">Cancel</div>
+                </form>
+    
+    
             </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="selected-country">Selected Country</div>
-                    <i class="fa fa-times-circle" (click)="deleteRole(role)"></i>
-                    <span>India</span>
-                </div>
-            </div>
-            <div class="matched-notification">
-                <div class="matched-notification__heading">
-                    <span>Geozone Matched...</span>
-                    <button class="btn btn-primary btn-sm ">Create notification for 9 Geozones</button>
-                </div>
-                <div class="matched-notification__body">
-                    <p><span class="matched-notification__name">TDP</span> | <span
-                            class="matched-notification__id">245ef880-7b98-11e9-809f-2593c28cf2a3</span></p>
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        <label for="text">Text</label>
-                        <input type="text" class="form-control">
-                        <small id="text" class="form-text text-muted">We'll never share your email with anyone
-                            else.</small>
-                    </div>
-                </div>
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        <label for="text">Text</label>
-                        <input type="text" class="form-control">
-                        <small id="text" class="form-text text-muted">We'll never share your email with anyone
-                            else.</small>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label for="text">Image Url</label>
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label for="text">Action Url</label>
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label for="text">Start Date</label>
-                        <input type="date" class="form-control">
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label for="text">Validity Untill*</label>
-                        <input type="date" class="form-control">
-                    </div>
-                </div>
-                <div class="col-sm-2" *ngFor="let day of active_days">
-                    <div class="form-group">
-                        <label for="">{{day.name}}<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" />
-                    </div>
-                </div>
-                <div class="col-sm-2">
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input" value="" checked>isActive
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="btn btn-primary m-2">Save zone Notification</div>
-            <div class="btn btn-primary m-2">Cancel</div>
         </div>
     </div>
-</div>
