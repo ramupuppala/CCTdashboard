@@ -68,7 +68,7 @@
                 </div>
                 <div class="col-sm-3">
                     <div class="btn btn-primary notification-btns" (click)="onDelete(item.nt_id)">Delete</div>
-                    <div class="btn btn-primary notification-btns">Edit</div>
+                    <div class="btn btn-primary notification-btns" [routerLink]="['/edit-notification/',search_for,item.nt_id]">Edit</div>
                 </div>
             </div>
         </div>

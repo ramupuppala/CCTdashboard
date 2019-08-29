@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="card mt-3">
+        <div class="body">
+            <h4 class="geozone-heading"><span>App Dashboard > <span class="geozone-title">Geozones</span></span>
+                <button class="btn btn-warning btn-sm" [routerLink]="['/']">New Geozone</button>
+            </h4>
+        </div>
+    </div>
+    <div class="geozone-search mt-2">
+        <input type="text" class="form-control" [value]="searchByName" placeholder="Enter Your Search Zone name" id="search" name="username"
+            (change)="onChange($event)" />
+        <button class="btn btn-primary btn-sm" (click)="getGeozoneList()">Search</button>
+        <button class="btn btn-primary btn-sm" (click)="cleareSearch()">Clear</button>
+    </div>
+    
+    <div class="card mt-3">
+        <div class="body">
+            <table class="table">
+                <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Location</th>
+                      <th>City</th>
+                      <th>Loitering Delay</th>
+                      <th>Status</th>
+                      <th>Size</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let geozone of geozones">
+                      <td>{{geozone.name}}</td>
+                      <td>{{geozone.location}}</td>
+                      <td>{{geozone.city}}</td>
+                      <td>{{geozone.loitering_delay}}</td>
+                      <td>{{geozone.is_active}}</td>
+                      <td>{{geozone.radius}}</td>
+                      <td> 
+                          <button class="btn btn-default btn-sm"  [routerLink]="['/loyality-edit/']">Delete</button> |  
+                          <button class="btn btn-default btn-sm"  [routerLink]="['/loyality-edit/']">Edit</button> |  
+                          <button class="btn btn-default btn-sm"  [routerLink]="['/loyality-edit/']">Details</button></td>
+                      </tr>
+                  </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>

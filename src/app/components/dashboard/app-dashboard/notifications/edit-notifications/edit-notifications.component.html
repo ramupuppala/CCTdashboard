@@ -1,0 +1,196 @@
+<div class="create-notification mt-3">
+    <div class="card">
+        <div class="card-header">
+            <h5>Edit Notification</h5>
+        </div>
+        <div class="card-body">
+                  
+                <div class="" *ngIf="associated_zones.length>0 ">
+                 <span class="notification_label_input">Associated zones </span> 
+                  <small
+                            class="" *ngFor="let result of associated_zones">{{result}}, </small>
+                </div>
+                <div class="" *ngIf="associated_stores.length>0 ">
+                 <span class="notification_label_input">Associated zones </span> 
+                  <small
+                            class="" *ngFor="let result of associated_stores">{{result}}, </small>
+                </div>
+          
+            <hr>
+            <form  [formGroup]="notificationListData"
+                (keyup)="$event.keyCode == 13 &&saveNotificationList()">
+                <div class="row mt-3">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="text" class="notification_label_input">Text</label>
+                            <input type="text" class="form-control"
+                                [formControl]="notificationListData.controls.notificationList.controls.text"
+                                 />
+                            <small id="text" class="form-text text-muted"
+                                *ngIf="errorMsg||((!notificationListData.controls.notificationList.controls['text'].valid && notificationListData.controls.notificationList.controls['text'].touched))">We'll
+                                never share your email with anyone
+                                else.</small>
+                            <small id="text" class="form-text text-muted"
+                                >available wildcards <span *ngFor="let item of available_wildcards">{{item}}, </span></small>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="text" class="notification_label_input">Sub Text</label>
+                            <input type="text" class="form-control"
+                                [formControl]="notificationListData.controls.notificationList.controls.subtext"
+                                 />
+                            <small id="subtext" class="form-text text-muted">available wildcards <span *ngFor="let item of available_wildcards_sub_text">{{item}}, </span></small>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="text" class="notification_label_input">Image Url</label>
+                            <input type="text" class="form-control"
+                                [formControl]="notificationListData.controls.notificationList.controls.image_url"
+                                 />
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="text" class="notification_label_input">Action Url</label>
+                            <input type="text" class="form-control"
+                                [formControl]="notificationListData.controls.notificationList.controls.action_url" />
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="" class="notification_label_input"> Matching Type<span style="color: red">*</span></label>
+                            <select
+                                [formControl]="notificationListData.controls.notificationList.controls.notification_match_type"
+                                placeholder="Please select notification match type" class="form-control">
+                                <option label="General" value="GENERAL"></option>
+                                <option label="Multi Match Brand" value="MULTI_MATCH_BRAND"
+                                    *ngIf="search_for!='GEOZONE'"></option>
+                                <option label="Multi Match Store" value="MULTI_MATCH_STORE"
+                                    *ngIf="search_for!='GEOZONE'"></option>
+                                <option label="Brand" value="BRAND"
+                                    *ngIf="search_for!='GEOZONE' && brand_selected_for_current_search.br_id"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="" class="notification_label_input">Notification Type<span style="color: red">*</span></label>
+                            <select
+                                [formControl]="notificationListData.controls.notificationList.controls.selected_notification_type" class="form-control">
+                                <option *ngFor="let notification_type of notification_types" [ngValue]="notification_type">{{notification_type.name}}</option>                               
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4" >
+                        <div class="form-group">
+                            <label for="" class="notification_label_input"> Action Type<span style="color: red">*</span></label>
+                            <select
+                                [formControl]="notificationListData.controls.notificationList.controls.action_type" class="form-control">
+                                <option *ngFor="let notification_action_type of notification_action_types" [ngValue]="notification_action_type">{{notification_action_type.name}}</option>                               
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-12" *ngIf="notificationListData.controls.notificationList.value.selected_notification_type.name == 'Loyalty'">
+                        <div class="form-group">
+                            <label for="" class="notification_label_input"> Loyality Label<span style="color: red">*</span></label>
+                            <select
+                                [formControl]="notificationListData.controls.notificationList.controls.label" class="form-control">
+                                <option *ngFor="let label of labels">{{label}}</option>                               
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-12" *ngIf="notificationListData.controls.notificationList.value.selected_notification_type.name == 'Inventory'">
+                        <div class="form-group">
+                            <label for="inventor" class="notification_label_input"> Inventer <span style="color: red">*</span></label>                           
+                            <textarea class="form-control" rows="5" id="inventor"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="text" class="notification_label_input">Start Date</label>
+                            <!-- <input [owlDateTimeTrigger]="dt" [owlDateTime]="dt">
+                                <owl-date-time #dt></owl-date-time> -->
+                            <input type="date" class="form-control"
+                                [formControl]="notificationListData.controls.notificationList.controls.validity_start" />
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="text" class="notification_label_input">Validity Untill*</label>
+                            <input type="date" class="form-control"
+                                [formControl]="notificationListData.controls.notificationList.controls.validity_end" />
+                        </div>
+                    </div>                       
+                            <div class="col-sm-2" >
+                                    <div class="form-group">
+                                        <label for="" class="notification_label_input">SUNDAY<span style="color: red">*</span></label>
+                                        <input type="text" class="form-control"
+                                            [formControl]="notificationListData.controls.notificationList.controls.active_days.controls.SUNDAY" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-2" >
+                                    <div class="form-group">
+                                        <label for="" class="notification_label_input">MONDAY<span style="color: red">*</span></label>
+                                        <input type="text" class="form-control"
+                                            [formControl]="notificationListData.controls.notificationList.controls.active_days.controls.MONDAY" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-2" >
+                                    <div class="form-group">
+                                        <label for="" class="notification_label_input">TUESDAY<span style="color: red">*</span></label>
+                                        <input type="text" class="form-control"
+                                            [formControl]="notificationListData.controls.notificationList.controls.active_days.controls.TUESDAY" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-2" >
+                                    <div class="form-group">
+                                        <label for="" class="notification_label_input">WEDNESDAY<span style="color: red">*</span></label>
+                                        <input type="text" class="form-control"
+                                            [formControl]="notificationListData.controls.notificationList.controls.active_days.controls.WEDNESDAY" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-2" >
+                                    <div class="form-group">
+                                        <label for="" class="notification_label_input">THURSDAY<span style="color: red">*</span></label>
+                                        <input type="text" class="form-control"
+                                            [formControl]="notificationListData.controls.notificationList.controls.active_days.controls.THURSDAY" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-2" >
+                                    <div class="form-group" >
+                                        <label for="" class="notification_label_input">FRIDAY<span style="color: red">*</span></label>
+                                        <input type="text" class="form-control"
+                                            [formControl]="notificationListData.controls.notificationList.controls.active_days.controls.FRIDAY" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-2" >
+                                    <div class="form-group">
+                                        <label for="" class="notification_label_input">SATURDAY<span style="color: red">*</span></label>
+                                        <input type="text" class="form-control"
+                                            [formControl]="notificationListData.controls.notificationList.controls.active_days.controls.SATURDAY" />
+                                    </div>
+                                </div>
+                 
+                    
+                    <div class="col-sm-2">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input"
+                                    [formControl]="notificationListData.controls.notificationList.controls.isActive"
+                                    checked>isActive
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary m-2"  
+                [disabled]="!notificationListData.valid"
+                 (click)="saveNotificationList()" >Save zone Notification</button>
+                <div class="btn btn-primary m-2">Cancel</div>
+            </form>
+
+
+        </div>
+    </div>
+</div>

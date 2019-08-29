@@ -38,6 +38,10 @@ import { RelationsListComponent } from './components/dashboard/app-dashboard/rel
 //Notifications
 import { NotificationsComponent } from './components/dashboard/app-dashboard/notifications/notifications.component';
 import { CreateNotificationsComponent } from './components/dashboard/app-dashboard/notifications/create-notifications/create-notifications.component';
+import { EditNotificationsComponent } from './components/dashboard/app-dashboard/notifications/edit-notifications/edit-notifications.component';
+
+//geo-gone-list
+import { GeozoneListComponent } from './components/dashboard/app-dashboard/geozone-list/geozone-list.component';
 
 export const ROUTES: Route[] = [
     {
@@ -114,5 +118,11 @@ export const ROUTES: Route[] = [
     },
     {
         path: 'create-notification', component: CreateNotificationsComponent
+    },
+    {
+        path: 'edit-notification/:search/:nt_id', component: EditNotificationsComponent
+    },
+    {
+        path: 'geozone-list', component: GeozoneListComponent
     }
 ]

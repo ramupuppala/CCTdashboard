@@ -12,7 +12,7 @@ import { ProfileListService } from './services/profile-list-service';
 import { BrandService } from './services/brand-list-service';
 import { RelationsListService } from './services/relations-list-service';
 import { NotificationsService } from './services/notification-service';
-
+import { GeoZoneListService } from './services/geozone-list-service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -43,6 +43,8 @@ import { StoreManagerAssignedStore } from './components/dashboard/app-dashboard/
 import { RelationsListComponent } from './components/dashboard/app-dashboard/relations-list/relations-list.component';
 import { NotificationsComponent } from './components/dashboard/app-dashboard/notifications/notifications.component';
 import { CreateNotificationsComponent } from './components/dashboard/app-dashboard/notifications/create-notifications/create-notifications.component';
+import { EditNotificationsComponent } from './components/dashboard/app-dashboard/notifications/edit-notifications/edit-notifications.component';
+import { GeozoneListComponent } from './components/dashboard/app-dashboard/geozone-list/geozone-list.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +73,8 @@ import { CreateNotificationsComponent } from './components/dashboard/app-dashboa
     RelationsListComponent,
     NotificationsComponent,
     CreateNotificationsComponent,
+    EditNotificationsComponent,
+    GeozoneListComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,7 +85,7 @@ import { CreateNotificationsComponent } from './components/dashboard/app-dashboa
     RouterModule.forRoot(ROUTES),
     NgMultiSelectDropDownModule.forRoot()
   ],
-  providers: [UserService, LoyalityService,BroadcastNotificationService,ManageStaffService,HttpCallService,ProfileListService,BrandService,RelationsListService,NotificationsService],
+  providers: [UserService, LoyalityService,BroadcastNotificationService,ManageStaffService,HttpCallService,ProfileListService,BrandService,RelationsListService,NotificationsService,GeoZoneListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

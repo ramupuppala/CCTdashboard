@@ -90,5 +90,11 @@ export class NotificationsService {
         return this.httpCallService.httpCall(url, "post", data);
     }
 
+    notificationListData(data:{nt_id:string,search_for:string,app_id?:string}){
+        const url = environment.api_endpoint + '/v2/app/notification-for-edit/';
+        data.app_id=this.appId;
+        return this.httpCallService.httpCall(url, "post", data); 
+    }
+
 
 }
