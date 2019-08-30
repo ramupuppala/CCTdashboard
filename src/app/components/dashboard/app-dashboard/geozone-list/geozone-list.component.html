@@ -2,7 +2,7 @@
     <div class="card mt-3">
         <div class="body">
             <h4 class="geozone-heading"><span>App Dashboard > <span class="geozone-title">Geozones</span></span>
-                <button class="btn btn-warning btn-sm" [routerLink]="['/']">New Geozone</button>
+                <button class="btn btn-warning btn-sm" [routerLink]="['/create-geozone-list']">New Geozone</button>
             </h4>
         </div>
     </div>
@@ -37,7 +37,7 @@
                       <td>{{geozone.radius}}</td>
                       <td> 
                           <button class="btn btn-default btn-sm"  [routerLink]="['/loyality-edit/']">Delete</button> |  
-                          <button class="btn btn-default btn-sm"  [routerLink]="['/loyality-edit/']">Edit</button> |  
+                          <button class="btn btn-default btn-sm"  [routerLink]="['/create-geozone-list',geozone.g_id]">Edit</button> |  
                           <button class="btn btn-default btn-sm"  [routerLink]="['/loyality-edit/']">Details</button></td>
                       </tr>
                   </tbody>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GeoZoneListService } from '../../../../services/geozone-list-service'
+import { GeoZoneListService } from '../../../../services/geozone-list-service';
 @Component({
   selector: 'app-geozone-list',
   templateUrl: './geozone-list.component.html',

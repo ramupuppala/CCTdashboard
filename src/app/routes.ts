@@ -42,6 +42,7 @@ import { EditNotificationsComponent } from './components/dashboard/app-dashboard
 
 //geo-gone-list
 import { GeozoneListComponent } from './components/dashboard/app-dashboard/geozone-list/geozone-list.component';
+import { CreateGeozoneListComponent } from './components/dashboard/app-dashboard/geozone-list/create-geozone-list/create-geozone-list.component';
 
 export const ROUTES: Route[] = [
     {
@@ -124,5 +125,11 @@ export const ROUTES: Route[] = [
     },
     {
         path: 'geozone-list', component: GeozoneListComponent
+    },
+    {
+        path: 'create-geozone-list', component: CreateGeozoneListComponent
+    },
+    {
+        path: 'create-geozone-list/:g_id', component: CreateGeozoneListComponent
     }
 ]

@@ -45,6 +45,7 @@ import { NotificationsComponent } from './components/dashboard/app-dashboard/not
 import { CreateNotificationsComponent } from './components/dashboard/app-dashboard/notifications/create-notifications/create-notifications.component';
 import { EditNotificationsComponent } from './components/dashboard/app-dashboard/notifications/edit-notifications/edit-notifications.component';
 import { GeozoneListComponent } from './components/dashboard/app-dashboard/geozone-list/geozone-list.component';
+import { CreateGeozoneListComponent } from './components/dashboard/app-dashboard/geozone-list/create-geozone-list/create-geozone-list.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { GeozoneListComponent } from './components/dashboard/app-dashboard/geozo
     CreateNotificationsComponent,
     EditNotificationsComponent,
     GeozoneListComponent,
+    CreateGeozoneListComponent,
   ],
   imports: [
     BrowserModule,

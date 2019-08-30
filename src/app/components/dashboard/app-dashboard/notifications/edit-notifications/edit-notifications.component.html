@@ -79,6 +79,7 @@
                             <label for="" class="notification_label_input">Notification Type<span style="color: red">*</span></label>
                             <select
                                 [formControl]="notificationListData.controls.notificationList.controls.selected_notification_type" class="form-control">
+                                <option value="sdlkfjsdl">sdfgsdfsd</option>
                                 <option *ngFor="let notification_type of notification_types" [ngValue]="notification_type">{{notification_type.name}}</option>                               
                             </select>
                         </div>

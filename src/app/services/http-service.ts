@@ -27,5 +27,8 @@ export class HttpCallService {
           };
         return this.httpClient.post(url, data,httpOptions).toPromise();
     }
-
+  
+    httpLocation(url){
+      return this.httpClient.get(url).toPromise();
+    }
 }
