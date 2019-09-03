@@ -1,0 +1,153 @@
+<div class="container mt-3 mb-3">
+    <div class="card">
+        <div class="card-header">
+            <div class="engagement-zone-header">
+                <span><i class="fa fa-arrow-left"></i> Geozone Details</span>
+                              
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-2">
+                    <p class="geozone-title">Geozone Name</p>
+                    <p>{{geoZoneDetails.name}}</p>
+                </div>
+                <div class="col-sm-2">
+                    <p class="geozone-title">Location</p>
+                    <p>{{geoZoneDetails.location}}</p>
+                </div>
+                <div class="col-sm-4">
+                    <p class="geozone-title">Geozone Id</p>
+                    <p>{{ geoZoneDetails.g_id}}</p>
+                </div>
+                <div class="col-sm-2">
+                    <p class="geozone-title">Status</p>
+                    <p>{{geoZoneDetails.is_active}}</p>
+                </div>
+                <div class="col-sm-2">
+                    <p class="geozone-title">Size</p>
+                    <p>{{geoZoneDetails.radius}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <p class="geozone-title">City</p>
+                    <p>{{geoZoneDetails.city}}</p>
+                </div>
+                <div class="col-sm-2">
+                    <p class="geozone-title">State</p>
+                    <p>{{geoZoneDetails.state}}</p>
+                </div>
+                <div class="col-sm-4">
+                    <p class="geozone-title">Country</p>
+                    <p>{{geoZoneDetails.country}}</p>
+                </div>
+                <div class="col-sm-2">
+                    <p class="geozone-title">Valid till</p>
+                    <p>{{expiry_timestamp}}</p>
+                </div>
+                <div class="col-sm-2">
+                    <p class="geozone-title">Loitering Delay</p>
+                    <p>{{geoZoneDetails.loitering_delay}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mt-3">
+        <div class="card-header">        
+            <div class="engagement-zone-header">
+                    <span><i class="fa fa-arrow-left"></i> {{geoZoneDetails.name}} </span> <span>></span><span class="engagement-title">Engagement Zones</span>
+                <div class="engagement-zone-create-btn">
+                    <button class="btn btn-warning btn-sm" [routerLink]="['/engagement-zone-create',geoZoneDetails.g_id]">New Geozone</button>
+                </div>
+               
+            </div>
+        </div>
+        <div class="card-body table-responsive">
+            <table class="table ">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Id</th>
+                    <th>Status</th>
+                    <th>Size</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let engagementZone of engagementZones">
+                    <td>{{engagementZone.name}}</td>
+                    <td>{{engagementZone.location}}</td>
+                    <td>{{engagementZone.e_id}}</td>
+                    <td><span *ngIf="engagementZone.is_active;else diabledIsActive">Active</span>
+                    <ng-template #diabledIsActive>Disabled</ng-template>
+                    </td>
+                    <td>{{ engagementZone.radius}}</td>
+                    <td><button class="btn btn-default btn-sm"  (click)="deleteEngagementZone(engagementZone.e_id)">Delete</button> |  
+                        <button class="btn btn-default btn-sm"  [routerLink]="['/engagement-zone-create',geoZoneDetails.g_id,engagementZone.e_id]">Edit</button> |  
+                        <button class="btn btn-default btn-sm"  [routerLink]="['/engagement-zone-list/']">Details</button></td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+        </div>
+    </div>
+    <div class="card mt-3">
+        <div class="card-header">        
+            <div class="engagement-zone-header">
+                <span><i class="fa fa-arrow-left"></i>{{geoZoneDetails.name}}</span> <span>></span><span class="engagement-title">Notifications</span>
+                <div class="engagement-zone-create-btn">
+                    <button class="btn btn-warning btn-sm" [routerLink]="['/create-geozone-list']">New Geozone</button>
+                </div>
+               
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row notification-card" *ngFor="let item of geoNotification" >
+                <div class="col-sm-3">
+                    <div class="notification">
+                        <label for="">Notification id</label>
+                        <span style="font-size: 0.8em;">{{item.nt_id}}</span>
+                    </div>
+                    <div class="notification"> 
+                        <label for="">Notification Text</label>
+                        {{item.notification[0].text}} <br>
+                        <span style="font-size: 0.8em; color: #666;">{{item.notification[0].sub_text}}</span>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="notification">
+                        <label for="">Notification Type</label>
+                        {{item.notification_type[0].name}}
+                    </div>
+                    <div *ngIf="item.notification_type[0].name == 'Loyalty'" class="notification">
+                        <label for="">Loyalty Label</label>
+                        {{item.notification_labels.length>0?item.notification_labels[0].label:''}}
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="notification">
+                        <label for="">Action Type</label>
+                        {{item.notification_action_type[0].name}}
+                    </div>
+                    <div class="notification">
+                        <label for="">Match Type</label>
+                        {{item.notification[0].notification_match_type}}
+                    </div>
+                    <div *ngIf="item.notification[0].notification_match_type == 'BRAND'" class="notification">
+                        <label for="">Associated Brands</label>
+                        <span *ngFor="let brand of item.notification_brands" :key="'brand'+index1"
+                            style="font-size: 0.9em;">
+                            {{brand.name}} <span *ngIf="index1 < item.notification_brands.length - 1">, </span>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="btn btn-primary notification-btns" (click)="onDelete(item.nt_id)">Delete</div>
+                    <div class="btn btn-primary notification-btns" [routerLink]="['/edit-notification/',search_for,item.nt_id]">Edit</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

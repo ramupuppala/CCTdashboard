@@ -1,0 +1,78 @@
+<div class="card create-geozone-list">
+    <div class="card-header">
+        <h5>Engagement Zone - Create/ Edit</h5>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="engagementzoneList" (submit)="creategeozoneList()">
+            <div class="form-group">
+                <label for="name">Name*</label>
+                <input type="text" class="form-control" id="name"  placeholder="e.g. Rcity mall Ghatkopar Mumba" 
+                    [formControl]="engagementzoneList.controls.geozoneList.controls.name" (input)="fieldInput()" />
+                <span class="error"
+                    *ngIf="errorMsg||((!engagementzoneList.controls.geozoneList.controls['name'].valid && engagementzoneList.controls.geozoneList.controls['name'].touched))">*Please
+                    Enter Name</span>
+                
+            </div>
+            <div class="form-group">
+                <label for="location">Location*</label>
+                <input type="text" class="form-control" id="location" placeholder="e.g. 19.1208854, 72.9096773"
+                    [formControl]="engagementzoneList.controls.geozoneList.controls.location" (input)="fieldInput()" />
+               
+                <span class="error"
+                    *ngIf="errorMsg||((!engagementzoneList.controls.geozoneList.controls['location'].valid && engagementzoneList.controls.geozoneList.controls['location'].touched))">*Please
+                    Field is required</span>
+                    <small class="form-text text-muted" *ngIf="takeManualCityState">Please enter valid input (lat, lng)</small>
+            </div>
+            <div class="form-group">
+                <label for="img_url">image url</label>
+                <input type="text" class="form-control" id="img_url"
+                    [formControl]="engagementzoneList.controls.geozoneList.controls.img_url"  (input)="fieldInput()" />
+                    <span class="error"
+                    *ngIf="errorMsg||((!engagementzoneList.controls.geozoneList.controls['img_url'].valid && engagementzoneList.controls.geozoneList.controls['img_url'].touched))">*Please
+                    Enter img_url</span>
+            </div>
+            <div class="form-group">
+                <label for="mute_duration">Mute Duration</label>
+                <input type="number" class="form-control" id="mute_duration" min="0" max="7"  placeholder="Mute notification for days"
+                    [formControl]="engagementzoneList.controls.geozoneList.controls.mute_duration" (input)="fieldInput()" />
+                    <span class="error"
+                    *ngIf="errorMsg||((!engagementzoneList.controls.geozoneList.controls['mute_duration'].valid && engagementzoneList.controls.geozoneList.controls['mute_duration'].touched))">*Please
+                    Enter mute_duration</span>
+                <small class="form-text text-muted" *ngIf="engagementzoneList.controls.geozoneList.value.mute_duration < 0 || engagementzoneList.controls.geozoneList.value.mute_duration > 7">Mute duration should be between 0-7</small>
+            </div>
+            <div class="form-group">
+                <label for="radius">Radius *</label>
+                <input type="text" class="form-control" id="radius"
+                    [formControl]="engagementzoneList.controls.geozoneList.controls.radius" (input)="fieldInput()" />
+                    <span class="error"
+                    *ngIf="errorMsg||((!engagementzoneList.controls.geozoneList.controls['radius'].valid && engagementzoneList.controls.geozoneList.controls['radius'].touched))">*Please
+                    Enter radius</span>
+                    <small class="" *ngIf="engagementzoneList.controls.geozoneList.value.radius < 0">Raidus must be atleast 0 km.</small>
+            </div>
+            <div class="form-group">
+                <label for="loitering_delay">Loitering Delay </label>
+                <input type="text" class="form-control" id="loitering_delay"
+                    [formControl]="engagementzoneList.controls.geozoneList.controls.loitering_delay" (input)="fieldInput()" />
+                    <span class="error"
+                    *ngIf="errorMsg||((!engagementzoneList.controls.geozoneList.controls['loitering_delay'].valid && engagementzoneList.controls.geozoneList.controls['loitering_delay'].touched))">*Please
+                    Enter loitering_delay</span>
+            </div>
+            <div class="form-group">
+                <label for="expiry_timestamp">Valid Until *</label>
+                <input type="date" class="form-control" id="expiry_timestamp"
+                    [formControl]="engagementzoneList.controls.geozoneList.controls.expiry_timestamp" (input)="fieldInput()" />
+                    <span class="error"
+                    *ngIf="errorMsg||((!engagementzoneList.controls.geozoneList.controls['expiry_timestamp'].valid && engagementzoneList.controls.geozoneList.controls['expiry_timestamp'].touched))">*Please
+                    Enter expiry_timestamp</span>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                  <input type="checkbox" class="form-check-input" checked="true" [formControl]="engagementzoneList.controls.geozoneList.controls.is_active" (input)="fieldInput()" />isActive
+                </label>
+              </div>
+
+            <button type="button" class="btn btn-primary mt-3" (click)="creategeozoneList()"
+            [disabled]="!engagementzoneList.valid || engagementzoneList.controls.geozoneList.value.radius<0 || (engagementzoneList.controls.geozoneList.value.mute_duration < 0 || engagementzoneList.controls.geozoneList.value.mute_duration > 7)">Save</button>
+        </form>
+    </div>
+</div>

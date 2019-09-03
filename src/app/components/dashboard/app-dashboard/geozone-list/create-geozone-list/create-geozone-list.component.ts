@@ -75,6 +75,7 @@ export class CreateGeozoneListComponent implements OnInit {
   }
 
   public errorMsg: boolean = false;
+  
   constructor(private router: Router,private route: ActivatedRoute, private geozoneService: GeoZoneListService, private fb: FormBuilder) {
     this.geozoneListData = fb.group({
       "geozoneList": fb.group({

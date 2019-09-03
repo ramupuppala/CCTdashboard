@@ -43,6 +43,8 @@ import { EditNotificationsComponent } from './components/dashboard/app-dashboard
 //geo-gone-list
 import { GeozoneListComponent } from './components/dashboard/app-dashboard/geozone-list/geozone-list.component';
 import { CreateGeozoneListComponent } from './components/dashboard/app-dashboard/geozone-list/create-geozone-list/create-geozone-list.component';
+import { EngagementListComponent } from './components/dashboard/app-dashboard/geozone-list/engagement-list/engagement-list.component';
+import { EnagagementZoneCreateComponent } from './components/dashboard/app-dashboard/geozone-list/engagement-list/enagagement-zone-create/enagagement-zone-create.component';
 
 export const ROUTES: Route[] = [
     {
@@ -131,5 +133,14 @@ export const ROUTES: Route[] = [
     },
     {
         path: 'create-geozone-list/:g_id', component: CreateGeozoneListComponent
+    },
+    {
+        path: 'engagement-zone-list/:g_id', component: EngagementListComponent
+    },
+    {
+        path: 'engagement-zone-create/:g_id', component: EnagagementZoneCreateComponent
+    },
+    {
+        path: 'engagement-zone-create/:g_id/:e_id', component: EnagagementZoneCreateComponent
     }
 ]

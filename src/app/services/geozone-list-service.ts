@@ -45,4 +45,43 @@ export class GeoZoneListService {
         data.app_id=this.appId;
         return this.httpCallService.httpCall(url, "post", data);
     }
+
+    getEngagementList(g_id:string){
+        const url = environment.api_endpoint + '/v1/engagement-zone/';
+        return this.httpCallService.httpCall(url, "post", {
+            app_id:this.appId,
+            g_id:g_id
+        });
+    }
+
+    getGeozoneNotification(g_id:string){
+        const url = environment.api_endpoint + '/v1/geozone/notification/';
+        return this.httpCallService.httpCall(url, "post", {
+            app_id:this.appId,
+            g_id:g_id
+        });
+    }
+
+    createEngagementZoneList(payload:any,payloadUrl){
+        const url = environment.api_endpoint + payloadUrl;
+        payload.app_id=this.appId;
+        return this.httpCallService.httpCall(url, "post", payload);
+    }
+
+    getEngagementzoneById(data){
+        const url = environment.api_endpoint + '/v1/engagement-zone/get/';
+        data.app_id=this.appId;
+        return this.httpCallService.httpCall(url, "post", data);
+    }
+    deleteEngagementzoneById(data){
+        const url = environment.api_endpoint + '/v1/engagement-zone/delete/';
+        data.app_id=this.appId;
+        return this.httpCallService.httpCall(url, "post", data);
+    }
+
+    removeGeoNodification(data){
+        const url = environment.api_endpoint + '/v1/drilled-down-notification/delete/';
+        data.app_id=this.appId;
+        return this.httpCallService.httpCall(url, "post", data);
+    }
 }
