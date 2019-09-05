@@ -48,6 +48,8 @@ import { GeozoneListComponent } from './components/dashboard/app-dashboard/geozo
 import { CreateGeozoneListComponent } from './components/dashboard/app-dashboard/geozone-list/create-geozone-list/create-geozone-list.component';
 import { EngagementListComponent } from './components/dashboard/app-dashboard/geozone-list/engagement-list/engagement-list.component';
 import { EnagagementZoneCreateComponent } from './components/dashboard/app-dashboard/geozone-list/engagement-list/enagagement-zone-create/enagagement-zone-create.component';
+import { GeozoneNotificationComponent } from './components/dashboard/app-dashboard/geozone-list/geozone-notification/geozone-notification.component';
+import { GeoStoresComponent } from './components/dashboard/app-dashboard/geozone-list/geo-stores/geo-stores.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +83,8 @@ import { EnagagementZoneCreateComponent } from './components/dashboard/app-dashb
     CreateGeozoneListComponent,
     EngagementListComponent,
     EnagagementZoneCreateComponent,
+    GeozoneNotificationComponent,
+    GeoStoresComponent,
   ],
   imports: [
     BrowserModule,

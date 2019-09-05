@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EngagementListComponent } from './engagement-list.component';
+import { GeoStoresComponent } from './geo-stores.component';
 
-describe('EngagementListComponent', () => {
-  let component: EngagementListComponent;
-  let fixture: ComponentFixture<EngagementListComponent>;
+describe('GeoStoresComponent', () => {
+  let component: GeoStoresComponent;
+  let fixture: ComponentFixture<GeoStoresComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EngagementListComponent ]
+      declarations: [ GeoStoresComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EngagementListComponent);
+    fixture = TestBed.createComponent(GeoStoresComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

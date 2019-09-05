@@ -86,7 +86,7 @@
                     <td>{{ engagementZone.radius}}</td>
                     <td><button class="btn btn-default btn-sm"  (click)="deleteEngagementZone(engagementZone.e_id)">Delete</button> |  
                         <button class="btn btn-default btn-sm"  [routerLink]="['/engagement-zone-create',geoZoneDetails.g_id,engagementZone.e_id]">Edit</button> |  
-                        <button class="btn btn-default btn-sm"  [routerLink]="['/engagement-zone-list/']">Details</button></td>
+                        <button class="btn btn-default btn-sm"  [routerLink]="['/geo-store',geoZoneDetails.g_id,engagementZone.e_id]">Details</button></td>
                   </tr>
                   
                 </tbody>
@@ -98,7 +98,7 @@
             <div class="engagement-zone-header">
                 <span><i class="fa fa-arrow-left"></i>{{geoZoneDetails.name}}</span> <span>></span><span class="engagement-title">Notifications</span>
                 <div class="engagement-zone-create-btn">
-                    <button class="btn btn-warning btn-sm" [routerLink]="['/create-geozone-list']">New Geozone</button>
+                    <button class="btn btn-warning btn-sm" [routerLink]="['/geo-notification-create/',geoZoneDetails.g_id]">New Geozone</button>
                 </div>
                
             </div>
@@ -121,10 +121,7 @@
                         <label for="">Notification Type</label>
                         {{item.notification_type[0].name}}
                     </div>
-                    <div *ngIf="item.notification_type[0].name == 'Loyalty'" class="notification">
-                        <label for="">Loyalty Label</label>
-                        {{item.notification_labels.length>0?item.notification_labels[0].label:''}}
-                    </div>
+                    
                 </div>
                 <div class="col-sm-3">
                     <div class="notification">
@@ -144,8 +141,8 @@
                     </div>
                 </div>
                 <div class="col-sm-3">
-                    <div class="btn btn-primary notification-btns" (click)="onDelete(item.nt_id)">Delete</div>
-                    <div class="btn btn-primary notification-btns" [routerLink]="['/edit-notification/',search_for,item.nt_id]">Edit</div>
+                    <div class="btn btn-primary notification-btns" (click)="deleteNotification(item.nt_id)">Delete</div>
+                    <div class="btn btn-primary notification-btns" [routerLink]="['/geo-notification-edit/',geoZoneDetails.g_id,item.nt_id]">Edit</div>
                 </div>
             </div>
         </div>

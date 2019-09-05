@@ -194,16 +194,17 @@ export class EditNotificationsComponent implements OnInit {
 
         console.log("response ",this.associated_zones);
         const active_days=JSON.parse(response.data[0].notification[0].active_days)
+        let {text,sub_text,image_url,isActive,notification_match_type,validity_end,validity_start,action_url} =response.data[0].notification[0];
         this.notificationListData = this.fb.group({
           "notificationList": this.fb.group({
-            "text": [response.data[0].notification[0].text, Validators.required],
-            "subtext": [response.data[0].notification[0].sub_text],
-            "action_url": [response.data[0].notification[0].action_url],
-            "image_url": [response.data[0].notification[0].image_url],
-            "isActive": [response.data[0].notification[0].isActive],
-            "notification_match_type": [response.data[0].notification[0].notification_match_type, Validators.required],
-            "validity_end": [new Date(response.data[0].notification[0].validity_end)],
-            "validity_start": [new Date(response.data[0].notification[0].validity_start)],
+            "text": [text, Validators.required],
+            "subtext": [sub_text],
+            "action_url": [action_url],
+            "image_url": [image_url],
+            "isActive": [isActive],
+            "notification_match_type": [notification_match_type, Validators.required],
+            "validity_end": [new Date(validity_end)],
+            "validity_start": [new Date(validity_start)],
             "selected_notification_type": [response.data[0].notification_type[0], Validators.required],
             "active_days": this.fb.group({
               "SUNDAY":[active_days.SUNDAY],

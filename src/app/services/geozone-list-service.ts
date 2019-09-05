@@ -82,6 +82,19 @@ export class GeoZoneListService {
     removeGeoNodification(data){
         const url = environment.api_endpoint + '/v1/drilled-down-notification/delete/';
         data.app_id=this.appId;
+        data.st_id=null;
         return this.httpCallService.httpCall(url, "post", data);
+    }
+
+    createGeoNotification(payload:any,payloadUrl){
+        const url = environment.api_endpoint + payloadUrl;
+        payload.app_id=this.appId;
+        return this.httpCallService.httpCall(url, "post", payload);
+    }
+
+    getGeoNotificationListById(data){
+        const url = environment.api_endpoint + '/v1/app/notification-for-edit/';
+        data.app_id=this.appId;
+        return this.httpCallService.httpCall(url, "post", data)
     }
 }

@@ -1,0 +1,26 @@
+.geozone-title{
+    font-weight: 650;
+    font-size: 0.9em;
+    /* opacity: 0.8; */
+    margin-bottom: 0rem;
+}
+.fa-arrow-left{
+    cursor: pointer;
+    margin-right: .5em;
+}
+.btn-default{
+    color: #409eff;
+}
+
+.engagement-zone-header span{
+font-size: 1.2em;
+font-weight: 650;
+}
+
+.engagement-zone-create-btn{
+   float: right;
+   clear: both;
+}
+.engagement-title{
+    color: #409eff;
+}

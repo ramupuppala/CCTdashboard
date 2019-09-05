@@ -45,6 +45,8 @@ import { GeozoneListComponent } from './components/dashboard/app-dashboard/geozo
 import { CreateGeozoneListComponent } from './components/dashboard/app-dashboard/geozone-list/create-geozone-list/create-geozone-list.component';
 import { EngagementListComponent } from './components/dashboard/app-dashboard/geozone-list/engagement-list/engagement-list.component';
 import { EnagagementZoneCreateComponent } from './components/dashboard/app-dashboard/geozone-list/engagement-list/enagagement-zone-create/enagagement-zone-create.component';
+import { GeozoneNotificationComponent } from './components/dashboard/app-dashboard/geozone-list/geozone-notification/geozone-notification.component';
+import { GeoStoresComponent } from './components/dashboard/app-dashboard/geozone-list/geo-stores/geo-stores.component';
 
 export const ROUTES: Route[] = [
     {
@@ -142,5 +144,14 @@ export const ROUTES: Route[] = [
     },
     {
         path: 'engagement-zone-create/:g_id/:e_id', component: EnagagementZoneCreateComponent
+    },
+    {
+        path: 'geo-notification-create/:g_id', component: GeozoneNotificationComponent
+    },
+    {
+        path: 'geo-notification-edit/:g_id/:nt_id', component: GeozoneNotificationComponent
+    },
+    {
+        path: 'geo-store/:g_id/:e_id', component: GeoStoresComponent
     }
 ]

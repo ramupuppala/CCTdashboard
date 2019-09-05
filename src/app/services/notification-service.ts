@@ -96,5 +96,7 @@ export class NotificationsService {
         return this.httpCallService.httpCall(url, "post", data); 
     }
 
+    
+
 
 }

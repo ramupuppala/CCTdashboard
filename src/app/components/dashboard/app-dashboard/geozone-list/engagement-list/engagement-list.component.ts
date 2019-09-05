@@ -57,4 +57,15 @@ export class EngagementListComponent implements OnInit {
       }
     })
   }
+
+  deleteNotification(nt_id){
+    this.geozoneService.removeGeoNodification({
+      g_id:this.g_id,
+      nt_id
+    }).then((response:any)=>{
+      if(response.status){
+        this.getGeogoneNotification();
+      }
+    })
+  }
 }
