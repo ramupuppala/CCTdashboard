@@ -97,4 +97,21 @@ export class GeoZoneListService {
         data.app_id=this.appId;
         return this.httpCallService.httpCall(url, "post", data)
     }
+    getGeoStore(data){
+        const url = environment.api_endpoint + '/v1/store/';
+        data.app_id=this.appId;
+        return this.httpCallService.httpCall(url, "post", data)
+    }
+
+    updateLoaction(data){
+        const url = environment.api_endpoint + '/v1/store/update-location/';
+        data.app_id=this.appId;
+        return this.httpCallService.httpCall(url, "post", data)
+    }
+
+    deleteGeoStore(data){
+        const url = environment.api_endpoint + '/v1/store/delete/';
+        data.app_id=this.appId;
+        return this.httpCallService.httpCall(url, "post", data)
+    }
 }

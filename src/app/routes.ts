@@ -40,13 +40,17 @@ import { NotificationsComponent } from './components/dashboard/app-dashboard/not
 import { CreateNotificationsComponent } from './components/dashboard/app-dashboard/notifications/create-notifications/create-notifications.component';
 import { EditNotificationsComponent } from './components/dashboard/app-dashboard/notifications/edit-notifications/edit-notifications.component';
 
-//geo-gone-list
+//geozone-list
 import { GeozoneListComponent } from './components/dashboard/app-dashboard/geozone-list/geozone-list.component';
 import { CreateGeozoneListComponent } from './components/dashboard/app-dashboard/geozone-list/create-geozone-list/create-geozone-list.component';
 import { EngagementListComponent } from './components/dashboard/app-dashboard/geozone-list/engagement-list/engagement-list.component';
 import { EnagagementZoneCreateComponent } from './components/dashboard/app-dashboard/geozone-list/engagement-list/enagagement-zone-create/enagagement-zone-create.component';
 import { GeozoneNotificationComponent } from './components/dashboard/app-dashboard/geozone-list/geozone-notification/geozone-notification.component';
 import { GeoStoresComponent } from './components/dashboard/app-dashboard/geozone-list/geo-stores/geo-stores.component';
+
+
+//store-list
+import { StoresListComponent } from './components/dashboard/app-dashboard/stores-list/stores-list.component';
 
 export const ROUTES: Route[] = [
     {
@@ -153,5 +157,8 @@ export const ROUTES: Route[] = [
     },
     {
         path: 'geo-store/:g_id/:e_id', component: GeoStoresComponent
+    },
+    {
+        path: 'store-list', component: StoresListComponent
     }
 ]

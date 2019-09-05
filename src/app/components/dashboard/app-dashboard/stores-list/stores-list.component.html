@@ -1,0 +1,136 @@
+<div class="container mt-3 mb-3">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="store-list">
+                <span>App Dashboard</span> >
+                <span class="store-list__heading">Stores</span>
+                <button class="btn btn-warning btn-sm">new Unassigned Store</button>
+            </h5>
+        </div>
+        <div class="card-body">
+            <div class="row">        
+                <div class="col-sm-3 search-labels">
+                    <label class="form-check-label" for="radio1">
+                        <input type="radio" class="form-check-input" id="radio1" [(ngModel)]="store_type"
+                            name="store_type" value="APP_STORE" checked />
+                        <span>Unassigned stores</span>
+                    </label>
+                </div>
+                <div class="col-sm-3 search-labels">
+                    <label class="form-check-label" for="radio2">
+                        <input type="radio" class="form-check-input" id="radio2" [(ngModel)]="store_type"
+                            name="store_type" value="EZONE_STORE" /><span>Ezone Store</span>
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-warning btn-sm">Clear Selection</button>
+                </div>
+                <div class="col-sm-3">
+                    <button class="btn btn-primary btn-sm">Assigned Selected Stores</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3" *ngIf="store_type == 'APP_STORE'">
+                    <div class="form-group">
+                        <label for="sel1">Country</label>
+                        <select class="form-control"  [(ngModel)]="country" (change)="onChangeCountry()">
+                            <option *ngFor="let country of all_country_dropdown" [ngValue]="country.country" >{{country.country}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-3" *ngIf="store_type == 'APP_STORE'">
+                    <div class="form-group">
+                        <label for="sel1"  >State</label>
+                        <select class="form-control" [(ngModel)]="state" (change)="onChangeState()">
+                            <option *ngFor="let state of all_states_dropdown">{{state.state}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-3" *ngIf="store_type == 'APP_STORE'">
+                    <div class="form-group">
+                        <label for="sel1"  >City</label>
+                        <select class="form-control" [(ngModel)]="city">
+                            <option *ngFor="let city of all_city_dropdown">{{city.city}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-3" *ngIf="store_type != 'APP_STORE'">
+                    <div class="form-group">
+                        <label for="sel1">Engagement Zone</label>
+                        <select class="form-control" [(ngModel)]="selected_ezone">
+                            <option *ngFor="let ezone of ezones" [ngValue]="ezone">{{ezone.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <button class="btn btn-primary btn-sm" (click)="searchForStore()">Search</button>
+                    <button class="btn btn-primary btn-sm">Reset</button>
+                </div>
+            </div>
+                    <table class="table mt-3"  *ngFor="let store of stores;let i=index">
+                        <thead>
+                            <tr>
+                                <th>Atribute</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let store_attribute of store.store_attributes">
+                                <td>{{store_attribute.display_name}}</td>
+                                <td>{{store_attribute.value}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><small>{{store.st_id}}</small></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <button class="btn btn-default btn-sm">Notification</button>
+                                    <button class="btn btn-default btn-sm"
+                                        [routerLink]="['/engagement-zone-create']">Edit</button>
+                                    <button class="btn btn-default btn-sm"
+                                        (click)="deleteGeoStore(i)">Delete</button>
+                                    <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">Update
+                                        Location</button>
+                                    <button class="btn btn-default btn-sm" [routerLink]="['/engagement-zone-list/']">Manage
+                                        Brands</button>
+                                    <button class="btn btn-default btn-sm" [routerLink]="['/engagement-zone-list/']">Manage
+                                        Staff</button>
+        
+                                    <!-- The Modal -->
+                                    <div class="modal fade" id="myModal">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+        
+                                                <!-- Modal Header -->
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">Add Location</h4>
+                                                    <button type="button" class="close" data-dismiss="modal">&times; </button>
+                                                </div>
+        
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+                                                    <div class="form-group">                                            
+                                                        <input type="text" [(ngModel)]="location" class="form-control" id="usr"/>
+                                                        <small class="form-text text-muted"  *ngIf="!isLocation(location)">Please enter valid input (lat, lng)</small>
+                                                      </div>
+                                                </div>
+        
+                                                <!-- Modal footer -->
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger"
+                                                        data-dismiss="modal">Cancel</button>
+                                                    <button type="button" class="btn btn-primary"
+                                                       (click)="updateLocation(i)" [disabled]="!isLocation(location)" data-dismiss="modal">Confirm</button>
+                                                </div>
+        
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+        
+                        </tbody>
+                    </table>
+        </div>
+    </div>
+</div>

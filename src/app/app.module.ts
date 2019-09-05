@@ -13,6 +13,8 @@ import { BrandService } from './services/brand-list-service';
 import { RelationsListService } from './services/relations-list-service';
 import { NotificationsService } from './services/notification-service';
 import { GeoZoneListService } from './services/geozone-list-service';
+import { StoreListService } from './services/store-list-service';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -50,6 +52,7 @@ import { EngagementListComponent } from './components/dashboard/app-dashboard/ge
 import { EnagagementZoneCreateComponent } from './components/dashboard/app-dashboard/geozone-list/engagement-list/enagagement-zone-create/enagagement-zone-create.component';
 import { GeozoneNotificationComponent } from './components/dashboard/app-dashboard/geozone-list/geozone-notification/geozone-notification.component';
 import { GeoStoresComponent } from './components/dashboard/app-dashboard/geozone-list/geo-stores/geo-stores.component';
+import { StoresListComponent } from './components/dashboard/app-dashboard/stores-list/stores-list.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +88,7 @@ import { GeoStoresComponent } from './components/dashboard/app-dashboard/geozone
     EnagagementZoneCreateComponent,
     GeozoneNotificationComponent,
     GeoStoresComponent,
+    StoresListComponent,
   ],
   imports: [
     BrowserModule,
@@ -95,7 +99,7 @@ import { GeoStoresComponent } from './components/dashboard/app-dashboard/geozone
     RouterModule.forRoot(ROUTES),
     NgMultiSelectDropDownModule.forRoot()
   ],
-  providers: [UserService, LoyalityService,BroadcastNotificationService,ManageStaffService,HttpCallService,ProfileListService,BrandService,RelationsListService,NotificationsService,GeoZoneListService],
+  providers: [UserService, LoyalityService,BroadcastNotificationService,ManageStaffService,HttpCallService,ProfileListService,BrandService,RelationsListService,NotificationsService,GeoZoneListService,StoreListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
