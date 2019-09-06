@@ -1,0 +1,36 @@
+<div class="container mt-3 mb-3">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="store-list">
+                <span>{{storeNameAttribute.length? storeNameAttribute[0].value : 'Store'}}</span> >
+                <span class="store-list__heading">Store Brand</span>
+                <button class="btn btn-warning btn-sm">Add Brand</button>
+            </h5>
+        </div>
+    </div>
+    <div class="card mt-3">
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Id</th>
+                    <th>
+                        Custom Brand Id</th>
+                    <th>Weight</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let brand of brands;">
+                    <td>{{brand.name}}</td>
+                    <td>{{brand.br_id}}</td>
+                    <td>{{brand.custom_brand_id}}</td>
+                    <td>{{brand.weight}}</td>
+                    <td><button class="btn btn-default">Remove</button></td>
+                  </tr>               
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>

@@ -45,4 +45,29 @@ export class StoreListService {
         data.app_id=this.appId;
         return this.httpCallService.httpCall(url, "post", data);
     }
+    updateLoaction(data){
+        const url = environment.api_endpoint + '/v1/store/update-location/';
+        data.app_id=this.appId;
+        return this.httpCallService.httpCall(url, "post", data)
+    }
+    deleteGeoStore(data,dataUrl){
+        const url = environment.api_endpoint + dataUrl;
+        data.app_id=this.appId;
+        return this.httpCallService.httpCall(url, "post", data)
+    }
+    getStoreNotifications(data){
+        const url = environment.api_endpoint + '/v2/store/notification/';
+        data.app_id=this.appId;
+        return this.httpCallService.httpCall(url, "post", data)
+    }
+    getStore(data,dataUrl){
+        const url = environment.api_endpoint + dataUrl;
+        data.app_id=this.appId;
+        return this.httpCallService.httpCall(url, "post", data)
+    }
+    getProfileDetails(data,dataUrl){
+        const url = environment.api_endpoint + dataUrl;
+        data.app_id=this.appId;
+        return this.httpCallService.httpCall(url, "post", data)
+    }
 }

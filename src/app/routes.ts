@@ -51,6 +51,9 @@ import { GeoStoresComponent } from './components/dashboard/app-dashboard/geozone
 
 //store-list
 import { StoresListComponent } from './components/dashboard/app-dashboard/stores-list/stores-list.component';
+import { StoreNotificationComponent } from './components/dashboard/app-dashboard/stores-list/store-notification/store-notification.component';
+import { StoreBrandComponent } from './components/dashboard/app-dashboard/stores-list/store-brand/store-brand.component';
+import { StoreStaffComponent } from './components/dashboard/app-dashboard/stores-list/store-staff/store-staff.component';
 
 export const ROUTES: Route[] = [
     {
@@ -160,5 +163,14 @@ export const ROUTES: Route[] = [
     },
     {
         path: 'store-list', component: StoresListComponent
+    },
+    {
+        path: 'store-notification/:st_id/:e_id', component: StoreNotificationComponent
+    },
+    {
+        path: 'store-brand/:st_id/:e_id', component: StoreBrandComponent
+    },
+    {
+        path: 'store-staff/:st_id', component: StoreStaffComponent
     }
 ]

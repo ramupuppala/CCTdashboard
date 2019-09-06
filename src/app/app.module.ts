@@ -53,6 +53,9 @@ import { EnagagementZoneCreateComponent } from './components/dashboard/app-dashb
 import { GeozoneNotificationComponent } from './components/dashboard/app-dashboard/geozone-list/geozone-notification/geozone-notification.component';
 import { GeoStoresComponent } from './components/dashboard/app-dashboard/geozone-list/geo-stores/geo-stores.component';
 import { StoresListComponent } from './components/dashboard/app-dashboard/stores-list/stores-list.component';
+import { StoreNotificationComponent } from './components/dashboard/app-dashboard/stores-list/store-notification/store-notification.component';
+import { StoreBrandComponent } from './components/dashboard/app-dashboard/stores-list/store-brand/store-brand.component';
+import { StoreStaffComponent } from './components/dashboard/app-dashboard/stores-list/store-staff/store-staff.component';
 
 @NgModule({
   declarations: [
@@ -89,6 +92,9 @@ import { StoresListComponent } from './components/dashboard/app-dashboard/stores
     GeozoneNotificationComponent,
     GeoStoresComponent,
     StoresListComponent,
+    StoreNotificationComponent,
+    StoreBrandComponent,
+    StoreStaffComponent,
   ],
   imports: [
     BrowserModule,

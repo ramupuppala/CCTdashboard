@@ -43,9 +43,8 @@ export class StoresListComponent implements OnInit {
   getAppStore(){
     this.storeService.getAppStore(
       {
-        limit:0,
+        limit:10,
         skip:0,
-        b_id:""
       }
     ).then((response:any)=>{
       if(response.status){
@@ -84,9 +83,8 @@ export class StoresListComponent implements OnInit {
   }
 
   searchForStore(){
-    let url="";
-    if(this.store_type=="APP_STORE"){
-      url='';
+    let url="/v1/app-store/city/";
+    if(this.store_type == "APP_STORE"){
       this.storeService.searchForStoreList({
         city:this.city
       },url).then((response:any)=>{
@@ -109,4 +107,45 @@ export class StoresListComponent implements OnInit {
 
   public isLocation= (value) => value.split(",")[0]!='' && value.split(",")[0]!=undefined && value.split(",")[1]!='' && value.split(",")[1]!=undefined && !isNaN(parseInt(value.split(",")[0].trim())) && !isNaN(parseInt(value.split(",")[1].trim()))
   
+  updateLocation(index){
+    if(this.isLocation(this.location)){
+      
+      this.storeService.updateLoaction({
+        st_id:this.stores[index].store.uuid,
+        g_id:this.stores[index].g_id,
+        e_id:this.stores[index].e_id,
+        "properties":{
+          location:this.location
+        }
+      }).then((response:any)=>{
+        if(response.status){
+
+        }
+        else{
+          alert(response.validation)
+          this.location="";
+        }
+      })
+    }
+    console.log("index , locaiton",index,this.location)
+  }
+  
+  deleteGeoStore(index){
+    this.storeService.deleteGeoStore({
+     g_id:this.stores[index].g_id,
+     e_id:this.stores[index].e_id,
+     st_id:this.stores[index].st_id
+    },'/v1/app-store/delete/').then((response:any)=>{
+      if(response.status){
+        this.searchForStore();
+      }
+    })
+  }
+  removeEzoneStore(index, g_id, e_id, st_id){
+    this.storeService.deleteGeoStore( { g_id: g_id, e_id: e_id, st_id: st_id },'/v1/store/delete/').then((response:any)=>{
+      if(response.status){
+        this.searchForStore();
+      }
+    })
+  }
 }
