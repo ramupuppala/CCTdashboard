@@ -54,6 +54,9 @@ import { StoresListComponent } from './components/dashboard/app-dashboard/stores
 import { StoreNotificationComponent } from './components/dashboard/app-dashboard/stores-list/store-notification/store-notification.component';
 import { StoreBrandComponent } from './components/dashboard/app-dashboard/stores-list/store-brand/store-brand.component';
 import { StoreStaffComponent } from './components/dashboard/app-dashboard/stores-list/store-staff/store-staff.component';
+import { AssignBrandComponent } from './components/dashboard/app-dashboard/stores-list/store-brand/assign-brand/assign-brand.component';
+import { AssignManagerComponent } from './components/dashboard/app-dashboard/stores-list/store-staff/assign-manager/assign-manager.component';
+import { AssignCustomerComponent } from './components/dashboard/app-dashboard/stores-list/store-staff/assign-customer/assign-customer.component';
 
 export const ROUTES: Route[] = [
     {
@@ -172,5 +175,14 @@ export const ROUTES: Route[] = [
     },
     {
         path: 'store-staff/:st_id', component: StoreStaffComponent
+    },
+    {
+        path: 'store/assign-brand/:st_id', component: AssignBrandComponent
+    },
+    {
+        path: 'store/assign-manager/:st_id', component: AssignManagerComponent
+    },
+    {
+        path: 'store/assign-customer/:st_id', component: AssignCustomerComponent
     }
 ]

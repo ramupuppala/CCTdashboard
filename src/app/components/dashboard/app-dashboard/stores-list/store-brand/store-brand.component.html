@@ -4,7 +4,7 @@
             <h5 class="store-list">
                 <span>{{storeNameAttribute.length? storeNameAttribute[0].value : 'Store'}}</span> >
                 <span class="store-list__heading">Store Brand</span>
-                <button class="btn btn-warning btn-sm">Add Brand</button>
+                <button class="btn btn-warning btn-sm" [routerLink]="['/store/assign-brand',st_id]">Add Brand</button>
             </h5>
         </div>
     </div>
@@ -27,7 +27,7 @@
                     <td>{{brand.br_id}}</td>
                     <td>{{brand.custom_brand_id}}</td>
                     <td>{{brand.weight}}</td>
-                    <td><button class="btn btn-default">Remove</button></td>
+                    <td><button class="btn btn-default" (click)="removeBrands(brand.br_id)">Remove</button></td>
                   </tr>               
                 </tbody>
               </table>

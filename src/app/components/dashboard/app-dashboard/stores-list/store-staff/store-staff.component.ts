@@ -14,6 +14,8 @@ export class StoreStaffComponent implements OnInit {
   customerCareAdminProfiles = [];
   ngOnInit() {
     this.st_id=this.route.snapshot.paramMap.get('st_id');
+    this.getCustomers();
+    this.getManagers();
   }
   getCustomers(){
     this.storeService.getProfileDetails({
@@ -30,6 +32,26 @@ export class StoreStaffComponent implements OnInit {
     },"/v1/store/get/manager/").then((response:any)=>{
       if(response.status){
         this.managerProfiles=response.data;
+      }
+    })
+  }
+  removeManagerProfile(p_id){
+    this.storeService.removeProfile({
+      p_id,
+      st_id:this.st_id
+    },"v1/profile/store-manager/remove-store/").then((response:any)=>{
+      if(response.status){
+        this.getManagers();
+      }
+    })
+  }
+  removeCustomerProfile(p_id){
+    this.storeService.removeProfile({
+      p_id,
+      st_id:this.st_id
+    },"/v1/profile/customer-care-admin/remove-store/").then((response:any)=>{
+      if(response.status){
+        this.getCustomers();
       }
     })
   }

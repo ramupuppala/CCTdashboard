@@ -68,14 +68,14 @@
                     <button class="btn btn-primary btn-sm">Reset</button>
                 </div>
             </div>
-            <table class="table mt-3" *ngFor="let store of stores;let i=index">
+            <table class="table mt-3" *ngFor="let store of stores;let i=index" [ngStyle]="{'background-color': store.isActive == false ? '#dcdcdc' : '' }">
                 <thead>
                     <tr>
                         <th>Atribute</th>
                         <th>Value</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody >
                     <tr *ngFor="let store_attribute of store.store_attributes">
                         <td>{{store_attribute.display_name}}</td>
                         <td>{{store_attribute.value}}</td>
@@ -89,14 +89,17 @@
                                 [routerLink]="['/store-notification',store.st_id,store.e_id]" *ngIf="store_type=='EZONE_STORE'">Notification</button>
                             <button class="btn btn-default btn-sm"
                                 [routerLink]="['/engagement-zone-create']" *ngIf="store_type=='EZONE_STORE'">Edit</button>
-                            <button class="btn btn-default btn-sm" (click)="deleteGeoStore(i)" (click)="removeEzoneStore(index, store.g_id, store.e_id, store.st_id)">Delete</button>
-                            <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">Update
+                            <button class="btn btn-default btn-sm"  *ngIf="store_type=='EZONE_STORE'"   (click)="removeEzoneStore(index, store.g_id, store.e_id, store.st_id)">Delete</button>
+                            <button class="btn btn-default btn-sm" data-toggle="modal" *ngIf="store_type=='EZONE_STORE'" data-target="#myModal">Update
                                 Location</button>
                             <button class="btn btn-default btn-sm"
-                                [routerLink]="['/store-brand/',store.st_id,store.e_id]">Manage
+                                [routerLink]="['/store-brand',store.st_id,store.e_id]" *ngIf="store_type=='EZONE_STORE'">Manage
                                 Brands</button>
-                            <button class="btn btn-default btn-sm" [routerLink]="['/store-staff/',store.st_id]">Manage
+                            <button class="btn btn-default btn-sm" [routerLink]="['/store-staff/',store.st_id]" *ngIf="store_type=='EZONE_STORE'">Manage
                                 Staff</button>
+                            <button class="btn btn-default btn-sm" *ngIf="store_type=='APP_STORE'" data-toggle="modal"  data-target="#engagementModel">Assign Engagement Zone</button>
+                            <button class="btn btn-default btn-sm"  *ngIf="store_type=='APP_STORE'" (click)="activeFlag(store.st_id,store.isActive)">{{store.isActive ? "In-Active": "Active"}}</button>
+                            <button class="btn btn-default btn-sm"  *ngIf="store_type=='APP_STORE'"  (click)="removeAppStore(i)">Delete</button>
 
                             <!-- The Modal -->
                             <div class="modal fade" id="myModal">
@@ -125,6 +128,38 @@
                                                 data-dismiss="modal">Cancel</button>
                                             <button type="button" class="btn btn-primary" (click)="updateLocation(i)"
                                                 [disabled]="!isLocation(location)" data-dismiss="modal">Confirm</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                              <!-- The Modal -->
+                              <div class="modal fade" id="engagementModel">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">select Engagement Zone</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times; </button>
+                                        </div>
+
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <label for="sel1"></label>
+                                                <select class="form-control" [(ngModel)]="selected_ezone">
+                                                    <option *ngFor="let ezone of ezones" [ngValue]="ezone">{{ezone.name}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger"
+                                                data-dismiss="modal">Cancel</button>
+                                            <button type="button" class="btn btn-primary" (click)="assignEngagementZone(i)"
+                                                 data-dismiss="modal">Confirm</button>
                                         </div>
 
                                     </div>

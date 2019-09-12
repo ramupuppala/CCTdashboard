@@ -77,9 +77,9 @@
                                 (click)="deleteGeoStore(i)">Delete</button>
                             <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">Update
                                 Location</button>
-                            <button class="btn btn-default btn-sm" [routerLink]="['/engagement-zone-list/']">Manage
+                            <button class="btn btn-default btn-sm"   [routerLink]="['/store-brand',store.st_id,store.e_id]">Manage
                                 Brands</button>
-                            <button class="btn btn-default btn-sm" [routerLink]="['/engagement-zone-list/']">Manage
+                            <button class="btn btn-default btn-sm" [routerLink]="['/store-staff/',store.st_id]">Manage
                                 Staff</button>
 
                             <!-- The Modal -->

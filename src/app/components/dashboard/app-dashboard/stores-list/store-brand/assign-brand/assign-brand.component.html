@@ -1,0 +1,27 @@
+<div class="container mt-3 mb-3">
+    <div class="row">
+        <div class="col-sm-4 mt-3" *ngFor="let brand of brands">
+                <div class="card" >
+                        <div class="card-body" >
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>{{brand.name}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="2"><small >  {{brand.br_id}}</small></td>                                    
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-default"  style="float: right;color: #409eff" (click)="assignBrands(brand.br_id)">Assign Brand to Store</button>
+                        </div>
+                    </div>
+        </div>
+    </div>
+   
+</div>

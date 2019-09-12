@@ -56,6 +56,10 @@ import { StoresListComponent } from './components/dashboard/app-dashboard/stores
 import { StoreNotificationComponent } from './components/dashboard/app-dashboard/stores-list/store-notification/store-notification.component';
 import { StoreBrandComponent } from './components/dashboard/app-dashboard/stores-list/store-brand/store-brand.component';
 import { StoreStaffComponent } from './components/dashboard/app-dashboard/stores-list/store-staff/store-staff.component';
+import { CreateStoreComponent } from './components/dashboard/app-dashboard/stores-list/create-store/create-store.component';
+import { AssignBrandComponent } from './components/dashboard/app-dashboard/stores-list/store-brand/assign-brand/assign-brand.component';
+import { AssignManagerComponent } from './components/dashboard/app-dashboard/stores-list/store-staff/assign-manager/assign-manager.component';
+import { AssignCustomerComponent } from './components/dashboard/app-dashboard/stores-list/store-staff/assign-customer/assign-customer.component';
 
 @NgModule({
   declarations: [
@@ -95,6 +99,10 @@ import { StoreStaffComponent } from './components/dashboard/app-dashboard/stores
     StoreNotificationComponent,
     StoreBrandComponent,
     StoreStaffComponent,
+    CreateStoreComponent,
+    AssignBrandComponent,
+    AssignManagerComponent,
+    AssignCustomerComponent,
   ],
   imports: [
     BrowserModule,

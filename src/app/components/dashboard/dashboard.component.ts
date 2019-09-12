@@ -11,8 +11,7 @@ export class DashboardComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.userService.getDashboardAppData().then(((data: any) => {
-    
+    this.userService.getDashboardAppData().then(((data: any) => {    
       if (data.status) {
         console.log(data.data);
         this.appData=data.data;

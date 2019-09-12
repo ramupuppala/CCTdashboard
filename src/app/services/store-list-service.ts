@@ -50,7 +50,7 @@ export class StoreListService {
         data.app_id=this.appId;
         return this.httpCallService.httpCall(url, "post", data)
     }
-    deleteGeoStore(data,dataUrl){
+    deleteStore(data,dataUrl){
         const url = environment.api_endpoint + dataUrl;
         data.app_id=this.appId;
         return this.httpCallService.httpCall(url, "post", data)
@@ -70,4 +70,51 @@ export class StoreListService {
         data.app_id=this.appId;
         return this.httpCallService.httpCall(url, "post", data)
     }
+
+    activeFlag(data){
+        const url = environment.api_endpoint + "/v2/app-store/activeflag/";
+        data.app_id=this.appId;
+        return this.httpCallService.httpCall(url, "post", data)
+    }
+
+    assignEngagementzone(data,dataUrl){
+        const url = environment.api_endpoint + dataUrl;
+        data.app_id=this.appId;
+        return this.httpCallService.httpCall(url, "post", data)
+    }
+
+    getBrands(){
+        const url = environment.api_endpoint + '/v1/brand/';
+        return this.httpCallService.httpCall(url, "post", {app_id:this.appId});
+    }
+
+    assignBrands(data){
+        const url = environment.api_endpoint + "/v1/store/assign-brand/";
+        data.app_id=this.appId;
+        return this.httpCallService.httpCall(url, "post", data)
+    }
+
+    removeBrand(data){
+        const url = environment.api_endpoint + "/v1/store/remove-brand/";
+        data.app_id=this.appId;
+        return this.httpCallService.httpCall(url, "post", data)
+    }
+
+    removeProfile(data,dataUrl){
+        const url = environment.api_endpoint + dataUrl;
+        data.app_id=this.appId;
+        return this.httpCallService.httpCall(url, "post", data)
+    }
+
+    getStoreProfileDetails(dataUrl){
+        const url = environment.api_endpoint + dataUrl;
+        return this.httpCallService.httpCall(url, "post", {app_id:this.appId} );
+    }
+
+    
+  assignStoreProfile(data,dataUrl){
+    const url = environment.api_endpoint + dataUrl;
+    data.app_id=this.appId;
+    return this.httpCallService.httpCall(url, "post", data)
+}
 }

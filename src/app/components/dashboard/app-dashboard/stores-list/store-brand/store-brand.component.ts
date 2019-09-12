@@ -45,4 +45,15 @@ export class StoreBrandComponent implements OnInit {
       }
     })
   }
+
+  removeBrands(br_id){
+    this.storeService.removeBrand({
+      br_id,
+      st_id:this.st_id
+    }).then((response:any)=>{
+      if(response.status){
+        this.getBrands();
+      }
+    })
+  }
 }
