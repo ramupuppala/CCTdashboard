@@ -60,6 +60,7 @@ import { CreateStoreComponent } from './components/dashboard/app-dashboard/store
 import { AssignBrandComponent } from './components/dashboard/app-dashboard/stores-list/store-brand/assign-brand/assign-brand.component';
 import { AssignManagerComponent } from './components/dashboard/app-dashboard/stores-list/store-staff/assign-manager/assign-manager.component';
 import { AssignCustomerComponent } from './components/dashboard/app-dashboard/stores-list/store-staff/assign-customer/assign-customer.component';
+import { CreateStoreNotificationComponent } from './components/dashboard/app-dashboard/stores-list/store-notification/create-store-notification/create-store-notification.component';
 
 @NgModule({
   declarations: [
@@ -103,6 +104,7 @@ import { AssignCustomerComponent } from './components/dashboard/app-dashboard/st
     AssignBrandComponent,
     AssignManagerComponent,
     AssignCustomerComponent,
+    CreateStoreNotificationComponent,
   ],
   imports: [
     BrowserModule,

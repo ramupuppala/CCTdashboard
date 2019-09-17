@@ -1,22 +1,10 @@
-<div class="create-notification mt-3">
+<div class="create-notification container mt-3 mb-3">
     <div class="card">
         <div class="card-header">
-            <h5>Edit Notification</h5>
+            <h5>Store Notification</h5>
         </div>
         <div class="card-body">
-                  
-                <div class="" *ngIf="associated_zones.length>0 ">
-                 <span class="notification_label_input">Associated zones </span> 
-                  <small
-                            class="" *ngFor="let result of associated_zones">{{result}}, </small>
-                </div>
-                <div class="" *ngIf="associated_stores.length>0 ">
-                 <span class="notification_label_input">Associated zones </span> 
-                  <small
-                            class="" *ngFor="let result of associated_stores">{{result}}, </small>
-                </div>
-          
-            <hr>
+                 
             <form  [formGroup]="notificationListData"
                 (keyup)="$event.keyCode == 13 &&saveNotificationList()">
                 <div class="row mt-3">
@@ -66,11 +54,11 @@
                                 placeholder="Please select notification match type" class="form-control">
                                 <option label="General" value="GENERAL"></option>
                                 <option label="Multi Match Brand" value="MULTI_MATCH_BRAND"
-                                    *ngIf="search_for!='GEOZONE'"></option>
+                                    ></option>
                                 <option label="Multi Match Store" value="MULTI_MATCH_STORE"
-                                    *ngIf="search_for!='GEOZONE'"></option>
+                                    ></option>
                                 <option label="Brand" value="BRAND"
-                                    *ngIf="search_for!='GEOZONE' "></option>
+                                    ></option>
                             </select>
                         </div>
                     </div>
@@ -79,6 +67,7 @@
                             <label for="" class="notification_label_input">Notification Type<span style="color: red">*</span></label>
                             <select
                                 [formControl]="notificationListData.controls.notificationList.controls.selected_notification_type" class="form-control">
+                                <option value="sdlkfjsdl">sdfgsdfsd</option>
                                 <option *ngFor="let notification_type of notification_types" [ngValue]="notification_type">{{notification_type.name}}</option>                               
                             </select>
                         </div>
@@ -89,6 +78,15 @@
                             <select
                                 [formControl]="notificationListData.controls.notificationList.controls.action_type" class="form-control">
                                 <option *ngFor="let notification_action_type of notification_action_types" [ngValue]="notification_action_type">{{notification_action_type.name}}</option>                               
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-12" *ngIf="notificationListData.controls.notificationList.value.notification_match_type == 'BRAND'">
+                        <div class="form-group">
+                            <label for="" class="notification_label_input"> Associated Brands with Notification<span style="color: red">*</span></label>
+                            <select
+                                [formControl]="notificationListData.controls.notificationList.controls.selected_match_type_brands" class="form-control">
+                                <option *ngFor="let brand of store_brand_list" [ngValue]="brand">{{brand.name}}</option>                               
                             </select>
                         </div>
                     </div>

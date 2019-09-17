@@ -57,6 +57,7 @@ import { StoreStaffComponent } from './components/dashboard/app-dashboard/stores
 import { AssignBrandComponent } from './components/dashboard/app-dashboard/stores-list/store-brand/assign-brand/assign-brand.component';
 import { AssignManagerComponent } from './components/dashboard/app-dashboard/stores-list/store-staff/assign-manager/assign-manager.component';
 import { AssignCustomerComponent } from './components/dashboard/app-dashboard/stores-list/store-staff/assign-customer/assign-customer.component';
+import { CreateStoreNotificationComponent } from './components/dashboard/app-dashboard/stores-list/store-notification/create-store-notification/create-store-notification.component';
 
 export const ROUTES: Route[] = [
     {
@@ -184,5 +185,8 @@ export const ROUTES: Route[] = [
     },
     {
         path: 'store/assign-customer/:st_id', component: AssignCustomerComponent
+    },
+    {
+        path: 'create-store-notification/:st_id', component: CreateStoreNotificationComponent
     }
 ]

@@ -95,8 +95,16 @@ export class NotificationsService {
         data.app_id=this.appId;
         return this.httpCallService.httpCall(url, "post", data); 
     }
+   
+    getUniqueBrands(data){
+        const url = environment.api_endpoint + '/v1/stores/get-unique-brands/';
+        data.app_id=this.appId;
+        return this.httpCallService.httpCall(url, "post", data);
+    }
 
-    
-
-
+    deleteStoreNotification(data){
+        const url = environment.api_endpoint + '/v2/drilled-down-notification/delete/';
+        data.app_id=this.appId;
+        return this.httpCallService.httpCall(url, "post", data);
+    }
 }

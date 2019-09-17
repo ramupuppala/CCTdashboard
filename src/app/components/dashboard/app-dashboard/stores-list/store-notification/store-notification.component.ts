@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StoreListService } from '../../../../../services/store-list-service';
+import { NotificationsService } from '../../../../../services/notification-service';
 import { ActivatedRoute,Router} from '@angular/router';
 @Component({
   selector: 'app-store-notification',
@@ -13,7 +14,7 @@ export class StoreNotificationComponent implements OnInit {
   storeNotifications=[];
   storeNameAttribute= [];
   storeDetails:any;
-  constructor( private storeService:StoreListService,private route:ActivatedRoute,private router:Router) { }
+  constructor( private storeService:StoreListService,private notificationService : NotificationsService,private route:ActivatedRoute,private router:Router) { }
 
   ngOnInit() {
     this.st_id=this.route.snapshot.paramMap.get('st_id');
@@ -42,6 +43,19 @@ export class StoreNotificationComponent implements OnInit {
         this.storeNameAttribute=this.storeDetails.store_attributes.filter((item)=>{
           return item.key == 'name'
         })
+      }
+    })
+  }
+
+  deleteStoreNotification(nt_id){
+    this.notificationService.deleteStoreNotification({
+      g_id:null,
+      nt_id:nt_id,
+      st_id:this.st_id
+    }).then((response:any)=>{
+      if(response.status){
+        alert("Successfully Deleted");
+        this.getStoreNotifications();
       }
     })
   }

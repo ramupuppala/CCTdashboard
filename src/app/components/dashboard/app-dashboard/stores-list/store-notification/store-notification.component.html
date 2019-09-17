@@ -4,7 +4,7 @@
             <h5 class="store-list">
                 <span>{{storeNameAttribute.length? storeNameAttribute[0].value : 'Store'}}</span> >
                 <span class="store-list__heading">Stores</span>
-                <button class="btn btn-warning btn-sm">New Store Notification</button>
+                <button class="btn btn-warning btn-sm" [routerLink]="['/create-store-notification',st_id]">New Store Notification</button>
             </h5>
         </div>
         <div class="card-body">
@@ -48,8 +48,8 @@
                     </div>
                 </div>
                 <div class="col-sm-3">
-                    <div class="btn btn-primary notification-btns" (click)="onDelete(item.nt_id)">Delete</div>
-                    <div class="btn btn-primary notification-btns"
+                    <div class="btn btn-primary notification-btns" (click)="deleteStoreNotification(item.nt_id)">Delete</div>
+                    <div class="btn btn-primary notification-btns" [routerLink]="['/edit-notification/STORE',item.nt_id]"
                         >Edit</div>
                 </div>
             </div>
